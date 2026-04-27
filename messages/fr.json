@@ -1,0 +1,160 @@
+{
+  "nav": {
+    "produits": "Produits",
+    "services": "Services",
+    "blog": "Blog",
+    "about": "À propos",
+    "contact": "Contact",
+    "devis": "Demander un devis",
+    "langue": "EN"
+  },
+  "hero": {
+    "label": "Kleston — Québec",
+    "title": "Votre spécialiste en protection murale et sécurité architecturale",
+    "slogan": "La conformité livrée et installée",
+    "cta_primary": "Demander un devis",
+    "cta_secondary": "Découvrir nos produits",
+    "scroll": "Défiler"
+  },
+  "intro": {
+    "label": "Qui sommes-nous",
+    "title": "Un seul partenaire pour tout votre projet",
+    "text": "Kleston distribue, installe et entretient des systèmes de protection murale, de mains courantes et de sécurité architecturale certifiés aux normes internationales. Nous servons les établissements de santé, institutionnels et industriels partout au Québec.",
+    "point1": "Produits certifiés CE, ISO 9001, ROHS",
+    "point2": "Installation par techniciens qualifiés",
+    "point3": "Contrats d'entretien annuels disponibles",
+    "point4": "32 coloris disponibles par gamme"
+  },
+  "stats": {
+    "stat1_value": "32",
+    "stat1_label": "Coloris disponibles",
+    "stat2_value": "4",
+    "stat2_label": "Gammes de produits",
+    "stat3_value": "100%",
+    "stat3_label": "Produits certifiés",
+    "stat4_value": "QC",
+    "stat4_label": "Province entière desservie"
+  },
+  "services": {
+    "label": "Ce que nous faisons",
+    "title": "Un service clé en main complet",
+    "subtitle": "De la fourniture à l'entretien, un seul interlocuteur pour tout votre projet.",
+    "s1_title": "Fourniture et distribution",
+    "s1_desc": "Importation directe de produits certifiés CE et ISO 9001. Prix compétitifs garantis grâce à un approvisionnement sans intermédiaire. Livraison partout au Québec.",
+    "s2_title": "Installation professionnelle",
+    "s2_desc": "Pose par des techniciens qualifiés, dans les délais convenus. Chaque installation inclut une vérification complète de conformité avant réception des travaux.",
+    "s3_title": "Entretien et maintenance",
+    "s3_desc": "Contrats d'entretien annuels adaptés à vos équipements. Inspections périodiques, réglage et remplacement de pièces. Prolongez la durée de vie de vos installations.",
+    "s4_title": "Service après-vente",
+    "s4_desc": "Intervention rapide en cas de défaillance. Un seul interlocuteur pour toutes vos demandes, du diagnostic à la réparation. Délais garantis sous contrat.",
+    "cta": "En savoir plus sur nos services"
+  },
+  "produits": {
+    "label": "Nos produits",
+    "title": "Quatre gammes certifiées",
+    "subtitle": "Des solutions adaptées à chaque environnement, de la clinique à l'entrepôt.",
+    "g1_name": "Systèmes de main courante",
+    "g1_desc": "Mains courantes en vinyle, inox ou bois. Conformes aux normes internationales. 32 coloris.",
+    "g2_name": "Main courante + protection murale",
+    "g2_desc": "Systèmes combinés pour hôpitaux, CHSLD et établissements institutionnels. Antibactériens.",
+    "g3_name": "Protection murale antichoc",
+    "g3_desc": "Bandes de protection pour couloirs à forte circulation. Résistance aux chocs certifiée.",
+    "g4_name": "Protection d'angle",
+    "g4_desc": "Protège les angles des murs et colonnes. Vinyle sur aluminium ou inox 304.",
+    "cta": "Voir tous les produits",
+    "badge_certified": "Certifié",
+    "badge_colors": "32 couleurs",
+    "badge_inox": "Inox 304"
+  },
+  "certifications": {
+    "label": "Nos certifications",
+    "title": "Des produits qui respectent les normes les plus strictes",
+    "subtitle": "Tous nos produits sont importés directement de fabricants certifiés. Chaque pièce est testée et validée.",
+    "c1": "CE",
+    "c1_desc": "Conformité européenne",
+    "c2": "ISO 9001",
+    "c2_desc": "Management qualité",
+    "c3": "ROHS",
+    "c3_desc": "Sans métaux lourds",
+    "c4": "VOC Free",
+    "c4_desc": "Absence de gaz nocifs",
+    "c5": "Antibactérien",
+    "c5_desc": "Certifié TÜBITAK",
+    "c6": "Feu B1",
+    "c6_desc": "Résistance au feu"
+  },
+  "testimonials": {
+    "label": "Témoignages",
+    "title": "Ils nous font confiance",
+    "t1_name": "Marc-André Tremblay",
+    "t1_title": "Directeur des opérations",
+    "t1_company": "Constructions Vézina",
+    "t1_text": "Kleston a livré et installé nos systèmes de mains courantes sur 3 étages en moins de deux semaines. Délais respectés, conformité parfaite à l'inspection du bâtiment.",
+    "t2_name": "Sophie Gagné",
+    "t2_title": "Gestionnaire d'immeubles",
+    "t2_company": "Immobilier Laurentien",
+    "t2_text": "Un seul fournisseur pour nos mains courantes et nos protections murales. Kleston a tout géré de A à Z. Prix imbattables et équipe sérieuse.",
+    "t3_name": "Jean-François Leblanc",
+    "t3_title": "Directeur des installations",
+    "t3_company": "CHSLD Les Érables",
+    "t3_text": "Les systèmes antibactériens de Kleston répondent exactement aux exigences sanitaires de notre établissement. Produits certifiés, installation propre. Nous recommandons."
+  },
+  "blog": {
+    "label": "Ressources",
+    "title": "Guides et articles",
+    "subtitle": "Tout ce que vous devez savoir sur les normes, la conformité et l'installation.",
+    "cta": "Voir tous les articles",
+    "read_more": "Lire l'article",
+    "min_read": "min de lecture"
+  },
+  "cta": {
+    "title": "Prêt à démarrer votre projet?",
+    "subtitle": "Contactez-nous pour un devis gratuit. Réponse garantie sous 24h.",
+    "cta_primary": "Nous contacter",
+    "phone": "514 550 8823",
+    "or": "ou appelez directement"
+  },
+  "contact": {
+    "label": "Nous joindre",
+    "title": "Demandez un devis gratuit",
+    "subtitle": "Remplissez le formulaire ci-dessous. Un de nos experts vous contacte sous 24h.",
+    "field_nom": "Nom complet",
+    "field_org": "Organisation",
+    "field_email": "Adresse email",
+    "field_tel": "Téléphone",
+    "field_message": "Votre message",
+    "field_message_placeholder": "Décrivez votre projet, les produits qui vous intéressent, la superficie à couvrir...",
+    "submit": "Envoyer le message",
+    "sending": "Envoi en cours...",
+    "success_title": "Message envoyé !",
+    "success_text": "Merci pour votre message. Nous vous répondrons dans les 24 heures.",
+    "error": "Une erreur est survenue. Veuillez réessayer ou nous appeler directement.",
+    "info_title": "Informations de contact",
+    "info_phone": "514 550 8823",
+    "info_email": "contact@kleston.ca",
+    "info_zone": "Province de Québec",
+    "info_hours": "Lun–Ven, 8h–17h"
+  },
+  "footer": {
+    "tagline": "La conformité livrée et installée",
+    "nav_title": "Navigation",
+    "produits_title": "Produits",
+    "contact_title": "Contact",
+    "copyright": "© 2025 Kleston. Tous droits réservés.",
+    "privacy": "Politique de confidentialité",
+    "p1": "Systèmes de main courante",
+    "p2": "Main courante + protection murale",
+    "p3": "Protection murale antichoc",
+    "p4": "Protection d'angle"
+  },
+  "cookie": {
+    "text": "Ce site utilise des outils d'analyse pour améliorer votre expérience. Conformément à la Loi 25 du Québec sur la protection des renseignements personnels.",
+    "accept": "Accepter",
+    "decline": "Refuser",
+    "learn_more": "En savoir plus"
+  },
+  "privacy": {
+    "title": "Politique de confidentialité",
+    "last_updated": "Dernière mise à jour : janvier 2025"
+  }
+}

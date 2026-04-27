@@ -1,0 +1,160 @@
+{
+  "nav": {
+    "produits": "Products",
+    "services": "Services",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact",
+    "devis": "Request a quote",
+    "langue": "FR"
+  },
+  "hero": {
+    "label": "Kleston — Quebec",
+    "title": "Your specialist in wall protection and architectural safety",
+    "slogan": "Compliance delivered and installed",
+    "cta_primary": "Request a quote",
+    "cta_secondary": "Explore our products",
+    "scroll": "Scroll"
+  },
+  "intro": {
+    "label": "Who we are",
+    "title": "One partner for your entire project",
+    "text": "Kleston supplies, installs and maintains wall protection systems, handrails and certified architectural safety products across Quebec. We serve healthcare, institutional and industrial facilities.",
+    "point1": "CE, ISO 9001, ROHS certified products",
+    "point2": "Installation by qualified technicians",
+    "point3": "Annual maintenance contracts available",
+    "point4": "32 colors available per product line"
+  },
+  "stats": {
+    "stat1_value": "32",
+    "stat1_label": "Available colors",
+    "stat2_value": "4",
+    "stat2_label": "Product lines",
+    "stat3_value": "100%",
+    "stat3_label": "Certified products",
+    "stat4_value": "QC",
+    "stat4_label": "Full province coverage"
+  },
+  "services": {
+    "label": "What we do",
+    "title": "Complete turnkey service",
+    "subtitle": "From supply to maintenance, one point of contact for your entire project.",
+    "s1_title": "Supply and distribution",
+    "s1_desc": "Direct import of CE and ISO 9001 certified products. Guaranteed competitive pricing through direct sourcing. Delivery across Quebec.",
+    "s2_title": "Professional installation",
+    "s2_desc": "Installation by qualified technicians, on time. Each installation includes a full compliance check before project handover.",
+    "s3_title": "Maintenance and upkeep",
+    "s3_desc": "Annual maintenance contracts tailored to your equipment. Periodic inspections, adjustments and parts replacement. Extend the lifespan of your installations.",
+    "s4_title": "After-sales service",
+    "s4_desc": "Fast response in case of failure. One contact for all your requests, from diagnosis to repair. Guaranteed response times under contract.",
+    "cta": "Learn more about our services"
+  },
+  "produits": {
+    "label": "Our products",
+    "title": "Four certified product lines",
+    "subtitle": "Solutions for every environment, from clinic to warehouse.",
+    "g1_name": "Handrail systems",
+    "g1_desc": "Handrails in vinyl, stainless steel or wood. Compliant with international standards. 32 colors.",
+    "g2_name": "Handrail + wall protection",
+    "g2_desc": "Combined systems for hospitals, long-term care and institutional facilities. Antibacterial.",
+    "g3_name": "Impact wall protection",
+    "g3_desc": "Protection strips for high-traffic corridors. Certified shock resistance.",
+    "g4_name": "Corner protection",
+    "g4_desc": "Protects wall and column corners. Vinyl on aluminum or 304 stainless steel.",
+    "cta": "View all products",
+    "badge_certified": "Certified",
+    "badge_colors": "32 colors",
+    "badge_inox": "SS 304"
+  },
+  "certifications": {
+    "label": "Our certifications",
+    "title": "Products meeting the strictest standards",
+    "subtitle": "All our products are imported directly from certified manufacturers. Every piece is tested and validated.",
+    "c1": "CE",
+    "c1_desc": "European compliance",
+    "c2": "ISO 9001",
+    "c2_desc": "Quality management",
+    "c3": "ROHS",
+    "c3_desc": "Heavy metal free",
+    "c4": "VOC Free",
+    "c4_desc": "No harmful gases",
+    "c5": "Antibacterial",
+    "c5_desc": "TÜBITAK certified",
+    "c6": "Fire B1",
+    "c6_desc": "Fire resistance"
+  },
+  "testimonials": {
+    "label": "Testimonials",
+    "title": "They trust us",
+    "t1_name": "Marc-André Tremblay",
+    "t1_title": "Operations Director",
+    "t1_company": "Constructions Vézina",
+    "t1_text": "Kleston delivered and installed our handrail systems across 3 floors in under two weeks. Deadlines met, full compliance at building inspection.",
+    "t2_name": "Sophie Gagné",
+    "t2_title": "Property Manager",
+    "t2_company": "Immobilier Laurentien",
+    "t2_text": "One supplier for our handrails and wall protection. Kleston handled everything from A to Z. Unbeatable pricing and a serious team.",
+    "t3_name": "Jean-François Leblanc",
+    "t3_title": "Facilities Director",
+    "t3_company": "CHSLD Les Érables",
+    "t3_text": "Kleston's antibacterial systems meet our facility's sanitary requirements exactly. Certified products, clean installation. Highly recommended."
+  },
+  "blog": {
+    "label": "Resources",
+    "title": "Guides and articles",
+    "subtitle": "Everything you need to know about standards, compliance and installation.",
+    "cta": "View all articles",
+    "read_more": "Read article",
+    "min_read": "min read"
+  },
+  "cta": {
+    "title": "Ready to start your project?",
+    "subtitle": "Contact us for a free quote. Guaranteed response within 24 hours.",
+    "cta_primary": "Contact us",
+    "phone": "514 550 8823",
+    "or": "or call directly"
+  },
+  "contact": {
+    "label": "Get in touch",
+    "title": "Request a free quote",
+    "subtitle": "Fill in the form below. One of our experts will contact you within 24 hours.",
+    "field_nom": "Full name",
+    "field_org": "Organization",
+    "field_email": "Email address",
+    "field_tel": "Phone number",
+    "field_message": "Your message",
+    "field_message_placeholder": "Describe your project, the products you're interested in, the area to cover...",
+    "submit": "Send message",
+    "sending": "Sending...",
+    "success_title": "Message sent!",
+    "success_text": "Thank you for your message. We'll get back to you within 24 hours.",
+    "error": "An error occurred. Please try again or call us directly.",
+    "info_title": "Contact information",
+    "info_phone": "514 550 8823",
+    "info_email": "contact@kleston.ca",
+    "info_zone": "Province of Quebec",
+    "info_hours": "Mon–Fri, 8am–5pm"
+  },
+  "footer": {
+    "tagline": "Compliance delivered and installed",
+    "nav_title": "Navigation",
+    "produits_title": "Products",
+    "contact_title": "Contact",
+    "copyright": "© 2025 Kleston. All rights reserved.",
+    "privacy": "Privacy policy",
+    "p1": "Handrail systems",
+    "p2": "Handrail + wall protection",
+    "p3": "Impact wall protection",
+    "p4": "Corner protection"
+  },
+  "cookie": {
+    "text": "This site uses analytics tools to improve your experience, in compliance with Quebec's Act respecting the protection of personal information in the private sector (Law 25).",
+    "accept": "Accept",
+    "decline": "Decline",
+    "learn_more": "Learn more"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "last_updated": "Last updated: January 2025"
+  }
+}
