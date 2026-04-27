@@ -1,115 +1,80 @@
-'use client'
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { useTranslations, useLocale } from 'next-intl'
 import Link from 'next/link'
-import { Package, Wrench, Settings, Phone, ArrowRight } from 'lucide-react'
+import Image from 'next/image'
+import { getTranslations } from 'next-intl/server'
+import { ArrowRight } from 'lucide-react'
 import { SectionLabel } from '@/components/ui/SectionLabel'
-import { EASE_OUT } from '@/lib/easings'
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE_OUT } },
+interface ServicesSectionProps {
+  locale: string
 }
 
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-}
+const serviceImages = [
+  'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1581092160562-40aa08e76a40?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1563396983906-b3795482a59a?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=800&q=80',
+]
 
-const ICONS = [Package, Wrench, Settings, Phone]
-
-export function ServicesSection() {
-  const t = useTranslations('services')
-  const locale = useLocale()
-  const ref = useRef<HTMLElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+export async function ServicesSection({ locale }: ServicesSectionProps) {
+  const t = await getTranslations('services')
 
   const services = [
-    { title: t('s1_title'), desc: t('s1_desc') },
-    { title: t('s2_title'), desc: t('s2_desc') },
-    { title: t('s3_title'), desc: t('s3_desc') },
-    { title: t('s4_title'), desc: t('s4_desc') },
+    { title: t('s1_title'), desc: t('s1_desc'), num: '01' },
+    { title: t('s2_title'), desc: t('s2_desc'), num: '02' },
+    { title: t('s3_title'), desc: t('s3_desc'), num: '03' },
+    { title: t('s4_title'), desc: t('s4_desc'), num: '04' },
   ]
 
   return (
-    <section ref={ref} className="bg-[#F0F0EE] py-24 md:py-32">
+    <section className="bg-[#FAFAF8] py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-
         {/* Header */}
-        <motion.div
-          variants={stagger}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="mb-16"
-        >
-          <motion.div variants={fadeInUp}>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div>
             <SectionLabel label={t('label')} />
-          </motion.div>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <motion.h2
-              variants={fadeInUp}
-              className="font-condensed font-black text-4xl md:text-5xl lg:text-6xl text-[#1A1A1A] uppercase leading-[0.95] tracking-tight max-w-lg"
-            >
+            <h2 className="font-condensed font-black text-5xl md:text-6xl uppercase tracking-tight text-[#1A1A1A] leading-[0.9] mt-4">
               {t('title')}
-            </motion.h2>
-            <motion.p
-              variants={fadeInUp}
-              className="font-body text-[#4A4A4A] text-base max-w-sm"
-            >
-              {t('subtitle')}
-            </motion.p>
+            </h2>
           </div>
-        </motion.div>
-
-        {/* Grille */}
-        <motion.div
-          variants={stagger}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#E0E0DE]"
-        >
-          {services.map((s, i) => {
-            const Icon = ICONS[i]
-            return (
-              <motion.div
-                key={i}
-                variants={fadeInUp}
-                className="bg-white p-8 md:p-10 group"
-              >
-                <div className="w-10 h-10 bg-[#FF5C00]/10 flex items-center justify-center mb-6">
-                  <Icon size={20} className="text-[#FF5C00]" />
-                </div>
-                <h3 className="font-condensed font-black text-xl uppercase tracking-wide text-[#1A1A1A] mb-3">
-                  {s.title}
-                </h3>
-                <p className="font-body text-sm text-[#4A4A4A] leading-relaxed">
-                  {s.desc}
-                </p>
-              </motion.div>
-            )
-          })}
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.6, ease: EASE_OUT, delay: 0.5 }}
-          className="mt-10 flex justify-center"
-        >
           <Link
             href={`/${locale}/services`}
-            className="group inline-flex items-center gap-2 font-condensed font-bold text-sm tracking-[0.15em] uppercase text-[#FF5C00] hover:text-[#E05200] transition-colors"
+            className="inline-flex items-center gap-2 font-condensed font-bold text-sm tracking-[0.15em] uppercase text-[#FF5C00] hover:text-[#1A1A1A] transition-colors shrink-0"
           >
             {t('cta')}
-            <ArrowRight
-              size={16}
-              className="group-hover:translate-x-1 transition-transform duration-200"
-            />
+            <ArrowRight size={14} />
           </Link>
-        </motion.div>
+        </div>
 
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#E0E0DE]">
+          {services.map((service, i) => (
+            <div key={i} className="bg-[#FAFAF8] group overflow-hidden">
+              {/* Image */}
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={serviceImages[i]}
+                  alt={service.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-[#141414]/40" />
+                <span className="absolute bottom-4 left-5 font-condensed font-black text-4xl text-white/20 leading-none">
+                  {service.num}
+                </span>
+              </div>
+              {/* Content */}
+              <div className="p-7 border border-t-0 border-[#E0E0DE]">
+                <h3 className="font-condensed font-black text-xl uppercase tracking-tight text-[#1A1A1A] mb-3">
+                  {service.title}
+                </h3>
+                <p className="font-body text-sm text-[#4A4A4A] leading-relaxed">
+                  {service.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )

@@ -108,11 +108,12 @@
     "min_read": "min de lecture"
   },
   "cta": {
+    "label": "Prêts à commencer",
     "title": "Prêt à démarrer votre projet?",
     "subtitle": "Contactez-nous pour un devis gratuit. Réponse garantie sous 24h.",
     "cta_primary": "Nous contacter",
     "phone": "514 550 8823",
-    "or": "ou appelez directement"
+    "or": "ou appelez le"
   },
   "contact": {
     "label": "Nous joindre",
@@ -139,6 +140,7 @@
     "tagline": "La conformité livrée et installée",
     "nav_title": "Navigation",
     "produits_title": "Produits",
+    "cert_title": "Certifications",
     "contact_title": "Contact",
     "copyright": "© 2025 Kleston. Tous droits réservés.",
     "privacy": "Politique de confidentialité",

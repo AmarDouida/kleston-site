@@ -1,9 +1,14 @@
-export function SectionLabel({ label, light = false }: { label: string; light?: boolean }) {
+interface SectionLabelProps {
+  label: string
+  light?: boolean
+}
+
+export function SectionLabel({ label, light = false }: SectionLabelProps) {
   return (
-    <div className="flex items-center gap-3 mb-4">
-      <div className="w-6 h-0.5 bg-[#FF5C00] shrink-0" />
+    <div className="flex items-center gap-3">
+      <span className="block w-8 h-px bg-[#FF5C00]" />
       <span
-        className={`font-condensed font-bold text-xs tracking-[0.25em] uppercase ${
+        className={`font-condensed font-bold text-xs tracking-[0.2em] uppercase ${
           light ? 'text-[#FF5C00]' : 'text-[#4A4A4A]'
         }`}
       >

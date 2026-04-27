@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
+import { getAllPosts } from '@/lib/mdx'
 import { HeroSection } from '@/components/home/HeroSection'
+import { CredibilityBar } from '@/components/home/CredibilityBar'
 import { IntroSection } from '@/components/home/IntroSection'
 import { StatsSection } from '@/components/home/StatsSection'
 import { ServicesSection } from '@/components/home/ServicesSection'
 import { ProductsSection } from '@/components/home/ProductsSection'
-import { CertificationsSection } from '@/components/home/CertificationsSection'
 import { TestimonialsSection } from '@/components/home/TestimonialsSection'
 import { BlogPreviewSection } from '@/components/home/BlogPreviewSection'
 import { CTASection } from '@/components/home/CTASection'
@@ -50,18 +51,25 @@ export async function generateMetadata({
   }
 }
 
-export default function HomePage() {
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale } = await params
+  const posts = getAllPosts(locale as 'fr' | 'en').slice(0, 3)
+
   return (
     <>
-      <HeroSection />
-      <IntroSection />
+      <HeroSection locale={locale} />
+      <CredibilityBar />
+      <IntroSection locale={locale} />
       <StatsSection />
-      <ServicesSection />
-      <ProductsSection />
-      <CertificationsSection />
+      <ServicesSection locale={locale} />
+      <ProductsSection locale={locale} />
       <TestimonialsSection />
-      <BlogPreviewSection />
-      <CTASection />
+      <BlogPreviewSection locale={locale} posts={posts} />
+      <CTASection locale={locale} />
     </>
   )
 }

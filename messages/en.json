@@ -108,11 +108,12 @@
     "min_read": "min read"
   },
   "cta": {
+    "label": "Ready to begin",
     "title": "Ready to start your project?",
     "subtitle": "Contact us for a free quote. Guaranteed response within 24 hours.",
     "cta_primary": "Contact us",
     "phone": "514 550 8823",
-    "or": "or call directly"
+    "or": "or call"
   },
   "contact": {
     "label": "Get in touch",
@@ -139,6 +140,7 @@
     "tagline": "Compliance delivered and installed",
     "nav_title": "Navigation",
     "produits_title": "Products",
+    "cert_title": "Certifications",
     "contact_title": "Contact",
     "copyright": "© 2025 Kleston. All rights reserved.",
     "privacy": "Privacy policy",

@@ -1,91 +1,66 @@
-'use client'
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
-import { useTranslations, useLocale } from 'next-intl'
 import Link from 'next/link'
-import { Phone, ArrowRight } from 'lucide-react'
-import { EASE_OUT } from '@/lib/easings'
+import Image from 'next/image'
+import { getTranslations } from 'next-intl/server'
+import { ArrowRight, Phone } from 'lucide-react'
+import { SectionLabel } from '@/components/ui/SectionLabel'
 
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
+interface CTASectionProps {
+  locale: string
 }
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE_OUT } },
-}
-
-export function CTASection() {
-  const t = useTranslations('cta')
-  const locale = useLocale()
-  const ref = useRef<HTMLElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+export async function CTASection({ locale }: CTASectionProps) {
+  const t = await getTranslations('cta')
 
   return (
-    <section ref={ref} className="relative bg-[#FF5C00] py-24 md:py-32 overflow-hidden">
-      {/* KS watermark décoratif */}
-      <div className="absolute inset-0 flex items-center justify-end pointer-events-none opacity-[0.06]">
-        <svg viewBox="0 0 992 896" className="h-full w-auto">
-          <polygon
-            points="463 507 735 507 735 651 378 651 213 486 153 546 153 743 0 896 0 0 153 0 153 319 472 0 992 0 992 153 556 153 332.5 376.5 463 507"
-            fill="white"
-          />
-          <path
-            d="M992,743l-153,153l-713,0l153,-153l560,0l0,-336l-560,0l153,-153l560,0l0,489Z"
-            fill="white"
-          />
-        </svg>
+    <section className="relative bg-[#141414] py-32 md:py-40 overflow-hidden">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <Image
+          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80"
+          alt=""
+          fill
+          className="object-cover opacity-15"
+          sizes="100vw"
+          aria-hidden="true"
+        />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-        <motion.div
-          variants={stagger}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-          className="max-w-3xl"
-        >
-          <motion.h2
-            variants={fadeInUp}
-            className="font-condensed font-black text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white uppercase leading-[0.9] tracking-tight mb-6"
-          >
-            {t('title')}
-          </motion.h2>
+      {/* Orange line top */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-[#FF5C00]" />
 
-          <motion.p
-            variants={fadeInUp}
-            className="font-body text-[#1E1E1E]/75 text-lg md:text-xl mb-10"
-          >
-            {t('subtitle')}
-          </motion.p>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 text-center">
+        <SectionLabel label={t('label')} light />
 
-          <motion.div
-            variants={fadeInUp}
-            className="flex flex-wrap items-center gap-5"
-          >
-            <Link
-              href={`/${locale}/contact`}
-              className="group inline-flex items-center gap-2 bg-white text-[#FF5C00] hover:bg-[#1E1E1E] hover:text-white font-condensed font-bold text-sm tracking-[0.15em] uppercase px-8 py-4 transition-all duration-200"
-            >
-              {t('cta_primary')}
-              <ArrowRight
-                size={16}
-                className="group-hover:translate-x-1 transition-transform duration-200"
-              />
-            </Link>
+        <h2 className="font-condensed font-black text-[clamp(48px,8vw,96px)] text-white uppercase leading-[0.88] tracking-tight mt-6 mb-8 max-w-4xl mx-auto">
+          {t('title')}
+        </h2>
 
-            <div className="flex items-center gap-3 text-white/70">
-              <span className="font-body text-sm">{t('or')}</span>
-              <a
-                href="tel:5145508823"
-                className="flex items-center gap-2 font-condensed font-bold text-base tracking-wide text-white hover:text-white/80 transition-colors"
-              >
-                <Phone size={16} />
-                {t('phone')}
-              </a>
-            </div>
-          </motion.div>
-        </motion.div>
+        <p className="font-body text-[#B0B2B5] text-lg max-w-xl mx-auto mb-12">
+          {t('subtitle')}
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
+          <Link
+            href={`/${locale}/contact`}
+            className="inline-flex items-center gap-2 font-condensed font-bold text-sm tracking-[0.15em] uppercase bg-[#FF5C00] hover:bg-[#E05200] text-white px-12 py-4 transition-colors"
+          >
+            {t('cta_primary')}
+            <ArrowRight size={14} />
+          </Link>
+
+          <a
+            href={`tel:${t('phone').replace(/\s/g, '')}`}
+            className="inline-flex items-center gap-3 font-body text-[#B0B2B5] hover:text-white transition-colors"
+          >
+            <Phone size={16} className="text-[#FF5C00]" />
+            <span>
+              <span className="text-xs tracking-wider uppercase text-[#7A7A7A] mr-2">
+                {t('or')}
+              </span>
+              {t('phone')}
+            </span>
+          </a>
+        </div>
       </div>
     </section>
   )

@@ -1,114 +1,67 @@
 'use client'
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
+
+import Image from 'next/image'
+import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
-import { Check } from 'lucide-react'
+import { CheckCircle2 } from 'lucide-react'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { EASE_OUT } from '@/lib/easings'
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: EASE_OUT },
-  },
+interface IntroSectionProps {
+  locale: string
 }
 
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
-}
-
-export function IntroSection() {
+export function IntroSection({ locale }: IntroSectionProps) {
   const t = useTranslations('intro')
-  const ref = useRef<HTMLElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-100px' })
+  const isFr = locale === 'fr'
 
   const points = [t('point1'), t('point2'), t('point3'), t('point4')]
 
   return (
-    <section ref={ref} className="bg-[#FAFAF8] py-24 md:py-32">
+    <section className="bg-[#FAFAF8] py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-
-          {/* Texte */}
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            animate={isInView ? 'visible' : 'hidden'}
-          >
-            <motion.div variants={fadeInUp}>
-              <SectionLabel label={t('label')} />
-            </motion.div>
-
-            <motion.h2
-              variants={fadeInUp}
-              className="font-condensed font-black text-4xl md:text-5xl lg:text-6xl text-[#1A1A1A] uppercase leading-[0.95] tracking-tight mb-6"
-            >
+        {/* Top grid: text left, image right */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Text */}
+          <div>
+            <SectionLabel label={t('label')} />
+            <h2 className="font-condensed font-black text-5xl md:text-6xl uppercase tracking-tight text-[#1A1A1A] leading-[0.9] mt-5 mb-8">
               {t('title')}
-            </motion.h2>
-
-            <motion.p
-              variants={fadeInUp}
-              className="font-body text-base md:text-lg text-[#4A4A4A] leading-relaxed mb-10"
-            >
+            </h2>
+            <p className="font-body text-[#4A4A4A] text-base leading-relaxed max-w-xl">
               {t('text')}
-            </motion.p>
+            </p>
 
-            <motion.ul variants={stagger} className="flex flex-col gap-4">
-              {points.map((point, i) => (
-                <motion.li
-                  key={i}
-                  variants={fadeInUp}
-                  className="flex items-start gap-3"
-                >
-                  <div className="w-5 h-5 rounded-full bg-[#FF5C00] flex items-center justify-center shrink-0 mt-0.5">
-                    <Check size={11} className="text-white" strokeWidth={3} />
-                  </div>
-                  <span className="font-body text-sm md:text-base text-[#4A4A4A]">
+            <ul className="mt-10 space-y-4">
+              {points.map((point) => (
+                <li key={point} className="flex items-start gap-3">
+                  <CheckCircle2 size={18} className="text-[#FF5C00] mt-0.5 shrink-0" />
+                  <span className="font-body text-sm text-[#4A4A4A] leading-relaxed">
                     {point}
                   </span>
-                </motion.li>
+                </li>
               ))}
-            </motion.ul>
-          </motion.div>
+            </ul>
+          </div>
 
-          {/* Visuel décoratif */}
+          {/* Image 4:5 */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 40 }}
-            transition={{ duration: 0.8, ease: EASE_OUT, delay: 0.3 }}
-            className="relative hidden lg:block"
+            className="relative w-full aspect-[4/5] overflow-hidden"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: EASE_OUT }}
+            viewport={{ once: true, amount: 0.3 }}
           >
-            <div className="relative">
-              <div className="absolute -inset-4 bg-[#F0F0EE]" />
-              <div className="relative bg-[#1E1E1E] aspect-square flex items-center justify-center p-16">
-                <svg
-                  viewBox="0 0 992 896"
-                  className="w-full max-w-[280px] opacity-90"
-                >
-                  <polygon
-                    points="463 507 735 507 735 651 378 651 213 486 153 546 153 743 0 896 0 0 153 0 153 319 472 0 992 0 992 153 556 153 332.5 376.5 463 507"
-                    fill="#FF5C00"
-                  />
-                  <path
-                    d="M992,743l-153,153l-713,0l153,-153l560,0l0,-336l-560,0l153,-153l560,0l0,489Z"
-                    fill="#B0B2B5"
-                  />
-                </svg>
-                <div className="absolute bottom-6 right-6 bg-[#FF5C00] px-4 py-3">
-                  <p className="font-condensed font-black text-white text-2xl leading-none">
-                    100%
-                  </p>
-                  <p className="font-condensed font-bold text-white text-xs tracking-widest uppercase">
-                    Certifié
-                  </p>
-                </div>
-              </div>
-            </div>
+            <Image
+              src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=80"
+              alt={isFr ? 'Couloir architectural moderne' : 'Modern architectural corridor'}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            {/* Orange accent */}
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-[#FF5C00]" />
           </motion.div>
-
         </div>
       </div>
     </section>

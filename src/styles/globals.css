@@ -74,7 +74,7 @@
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
+  --radius: 0rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -86,10 +86,12 @@
 
   /* Kleston brand tokens */
   --orange: #FF5C00;
+  --orange-deep: #CC4A00;
   --orange-hover: #E05200;
   --silver: #B0B2B5;
   --noir: #1E1E1E;
   --noir-surface: #2A2A2A;
+  --bg-dark: #141414;
   --creme: #FAFAF8;
   --blanc: #FFFFFF;
   --gris-clair: #F0F0EE;
@@ -100,6 +102,11 @@
 
   --font-condensed: var(--font-barlow-condensed);
   --font-body: var(--font-barlow);
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 @layer base {
@@ -126,12 +133,18 @@
 
 @layer utilities {
   .font-condensed { font-family: var(--font-condensed), sans-serif; }
+  .font-body { font-family: var(--font-body), sans-serif; }
   .text-orange { color: var(--orange); }
   .bg-orange { background-color: var(--orange); }
   .bg-noir { background-color: var(--noir); }
+  .bg-dark { background-color: var(--bg-dark); }
   .bg-creme { background-color: var(--creme); }
   .text-texte-2 { color: var(--texte-2); }
   .text-texte-3 { color: var(--texte-3); }
   .bg-gris-clair { background-color: var(--gris-clair); }
   .border-gris-moyen { border-color: var(--gris-moyen); }
+  .animate-marquee {
+    display: flex;
+    animation: marquee-scroll 60s linear infinite;
+  }
 }

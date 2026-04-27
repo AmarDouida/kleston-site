@@ -1,143 +1,134 @@
 'use client'
-import { useScroll, useTransform, motion } from 'framer-motion'
-import { useRef } from 'react'
+
 import Image from 'next/image'
 import Link from 'next/link'
-import { useTranslations, useLocale } from 'next-intl'
-import { ChevronDown } from 'lucide-react'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useTranslations } from 'next-intl'
+import { ArrowDown } from 'lucide-react'
+import { EASE_OUT } from '@/lib/easings'
 
-export function HeroSection() {
+interface HeroSectionProps {
+  locale: string
+}
+
+export function HeroSection({ locale }: HeroSectionProps) {
   const t = useTranslations('hero')
-  const locale = useLocale()
-  const ref = useRef<HTMLElement>(null)
+  const isFr = locale === 'fr'
+  const containerRef = useRef<HTMLElement>(null)
 
   const { scrollYProgress } = useScroll({
-    target: ref,
+    target: containerRef,
     offset: ['start start', 'end start'],
   })
+  const yImg = useTransform(scrollYProgress, [0, 1], ['0%', '18%'])
 
-  const ksY = useTransform(scrollYProgress, [0, 1], ['0%', '-20%'])
-  const ksOpacity = useTransform(scrollYProgress, [0, 0.6], [0.07, 0])
-  const ksScale = useTransform(scrollYProgress, [0, 1], [1, 1.1])
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0])
-  const contentY = useTransform(scrollYProgress, [0, 0.4], ['0%', '-10%'])
-
-  const contactPath = `/${locale}/contact`
-  const produitsPath = locale === 'fr' ? `/${locale}/produits` : `/${locale}/products`
+  const title = t('title')
+  const words = title.split(' ')
 
   return (
-    <section
-      ref={ref}
-      className="relative h-screen min-h-[700px] overflow-hidden bg-[#1E1E1E]"
-    >
-      {/* Fond avec parallax */}
-      <motion.div style={{ y: bgY }} className="absolute inset-0 scale-110">
+    <section ref={containerRef} className="relative h-screen min-h-[640px] overflow-hidden">
+      {/* Background: Ken Burns + parallax */}
+      <motion.div
+        className="absolute inset-0 will-change-transform"
+        style={{ y: yImg }}
+        initial={{ scale: 1.08 }}
+        animate={{ scale: 1.0 }}
+        transition={{ duration: 3.2, ease: EASE_OUT }}
+      >
         <Image
-          src="/images/hero/hero.jpg"
-          alt="Couloir institutionnel avec mains courantes Kleston"
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
+          alt="Kleston — protection architecturale au Québec"
           fill
           priority
-          quality={90}
-          className="object-cover object-center"
+          className="object-cover"
+          sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1E1E1E]/90 via-[#1E1E1E]/60 to-[#1E1E1E]/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1E1E1E]/80 via-transparent to-[#1E1E1E]/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#141414]/92 via-[#141414]/65 to-[#141414]/20" />
       </motion.div>
 
-      {/* KS watermark parallax */}
-      <motion.div
-        style={{ y: ksY, opacity: ksOpacity, scale: ksScale }}
-        className="absolute inset-0 flex items-center justify-center pointer-events-none"
-      >
-        <svg
-          viewBox="0 0 992 896"
-          className="w-[75vw] max-w-[900px]"
-          fill="white"
-        >
-          <polygon points="463 507 735 507 735 651 378 651 213 486 153 546 153 743 0 896 0 0 153 0 153 319 472 0 992 0 992 153 556 153 332.5 376.5 463 507" />
-          <path d="M992,743l-153,153l-713,0l153,-153l560,0l0,-336l-560,0l153,-153l560,0l0,489Z" />
-        </svg>
-      </motion.div>
-
-      {/* Contenu */}
-      <motion.div
-        style={{ opacity: contentOpacity, y: contentY }}
-        className="absolute inset-0 flex flex-col justify-end pb-16 md:pb-20 lg:pb-24 px-6 md:px-12 lg:px-20 max-w-5xl"
-      >
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="font-condensed font-bold text-xs tracking-[0.3em] text-[#FF5C00] uppercase mb-5"
-        >
-          {t('label')}
-        </motion.p>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.25 }}
-          className="font-condensed font-black text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white uppercase leading-[0.95] tracking-tight mb-5 max-w-3xl"
-        >
-          {t('title')}
-        </motion.h1>
-
+      {/* Content */}
+      <div className="relative z-10 h-full flex flex-col justify-center max-w-7xl mx-auto px-6 md:px-12 lg:px-20 pt-20">
+        {/* Section label */}
         <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: '3rem' }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="h-0.5 bg-[#FF5C00] mb-5"
-        />
-
-        <motion.p
+          className="flex items-center gap-3 mb-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.65 }}
-          className="font-body text-base md:text-lg text-[#B0B2B5] mb-8"
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <span className="block w-8 h-px bg-[#FF5C00]" />
+          <span className="font-condensed font-bold text-xs tracking-[0.22em] uppercase text-[#FF5C00]">
+            {t('label')}
+          </span>
+        </motion.div>
+
+        {/* Word-by-word animated title */}
+        <h1 className="font-condensed font-black text-[clamp(42px,8vw,96px)] text-white uppercase leading-[0.88] tracking-tight max-w-4xl">
+          {words.map((word, i) => (
+            <span key={i} className="inline-block overflow-hidden align-bottom mr-[0.22em] last:mr-0">
+              <motion.span
+                className="inline-block"
+                initial={{ y: '115%' }}
+                animate={{ y: '0%' }}
+                transition={{
+                  duration: 0.75,
+                  delay: 0.25 + i * 0.065,
+                  ease: EASE_OUT,
+                }}
+              >
+                {word}
+              </motion.span>
+            </span>
+          ))}
+        </h1>
+
+        {/* Slogan */}
+        <motion.p
+          className="font-body text-[#B0B2B5] text-lg md:text-xl mt-7 max-w-lg leading-relaxed"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.85, ease: EASE_OUT }}
         >
           {t('slogan')}
         </motion.p>
 
+        {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          className="flex flex-col sm:flex-row gap-4 mt-10"
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="flex flex-wrap gap-4"
+          transition={{ duration: 0.7, delay: 1.05, ease: EASE_OUT }}
         >
           <Link
-            href={contactPath}
-            className="group inline-flex items-center gap-2 bg-[#FF5C00] hover:bg-[#E05200] text-white font-condensed font-bold text-sm tracking-[0.15em] uppercase px-8 py-4 transition-all duration-200"
+            href={`/${locale}/contact`}
+            className="inline-flex items-center justify-center font-condensed font-bold text-sm tracking-[0.15em] uppercase bg-[#FF5C00] hover:bg-[#E05200] text-white px-10 py-4 transition-colors"
           >
             {t('cta_primary')}
-            <span className="group-hover:translate-x-1 transition-transform duration-200">
-              →
-            </span>
           </Link>
           <Link
-            href={produitsPath}
-            className="inline-flex items-center gap-2 border border-white/30 hover:border-white text-white font-condensed font-bold text-sm tracking-[0.15em] uppercase px-8 py-4 transition-all duration-200 hover:bg-white/5"
+            href={`/${locale}/${isFr ? 'produits' : 'products'}`}
+            className="inline-flex items-center justify-center font-condensed font-bold text-sm tracking-[0.15em] uppercase border border-white/30 hover:border-white text-white px-10 py-4 transition-colors"
           >
             {t('cta_secondary')}
           </Link>
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* Scroll indicator */}
       <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1.2 }}
-        className="absolute bottom-8 right-8 md:right-12 lg:right-20 flex flex-col items-center gap-2"
+        transition={{ delay: 1.5, duration: 0.6 }}
       >
-        <span className="font-condensed text-xs tracking-[0.2em] text-white/40 uppercase -rotate-90 origin-center mb-6">
+        <span className="font-condensed font-bold text-[10px] tracking-[0.25em] uppercase text-[#7A7A7A]">
           {t('scroll')}
         </span>
         <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+          animate={{ y: [0, 5, 0] }}
+          transition={{ repeat: Infinity, duration: 1.6, ease: 'easeInOut' }}
         >
-          <ChevronDown className="text-white/40" size={16} />
+          <ArrowDown size={14} className="text-[#7A7A7A]" />
         </motion.div>
       </motion.div>
     </section>

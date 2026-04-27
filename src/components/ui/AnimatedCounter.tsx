@@ -1,36 +1,51 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
-import { useInView } from 'framer-motion'
 
-interface Props {
-  value: string
+import { useEffect, useRef, useState } from 'react'
+
+interface AnimatedCounterProps {
+  target: string
   duration?: number
 }
 
-export function AnimatedCounter({ value, duration = 1800 }: Props) {
-  const numericValue = parseInt(value, 10)
-  const isNumeric = !isNaN(numericValue)
-
-  const [display, setDisplay] = useState(isNumeric ? '0' : value)
+export function AnimatedCounter({ target, duration = 1800 }: AnimatedCounterProps) {
+  const [display, setDisplay] = useState('0')
   const ref = useRef<HTMLSpanElement>(null)
-  const isInView = useInView(ref, { once: true })
+  const started = useRef(false)
+
+  // Parse numeric prefix and suffix (e.g. "500+" → 500, "+"; "100%" → 100, "%"; "QC" → NaN, "QC")
+  const match = target.match(/^(\d+)(.*)$/)
+  const numericTarget = match ? parseInt(match[1], 10) : NaN
+  const suffix = match ? match[2] : ''
+  const isNumeric = !isNaN(numericTarget)
 
   useEffect(() => {
-    if (!isInView || !isNumeric) return
-
-    let start: number | null = null
-
-    const step = (timestamp: number) => {
-      if (!start) start = timestamp
-      const elapsed = timestamp - start
-      const progress = Math.min(elapsed / duration, 1)
-      const eased = 1 - Math.pow(1 - progress, 3)
-      setDisplay(String(Math.floor(eased * numericValue)))
-      if (progress < 1) requestAnimationFrame(step)
+    if (!isNumeric) {
+      setDisplay(target)
+      return
     }
 
-    requestAnimationFrame(step)
-  }, [isInView, isNumeric, numericValue, duration])
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true
+          const start = performance.now()
+          const tick = (now: number) => {
+            const elapsed = now - start
+            const progress = Math.min(elapsed / duration, 1)
+            const eased = 1 - Math.pow(1 - progress, 3)
+            const current = Math.round(eased * numericTarget)
+            setDisplay(`${current}${suffix}`)
+            if (progress < 1) requestAnimationFrame(tick)
+          }
+          requestAnimationFrame(tick)
+        }
+      },
+      { threshold: 0.5 }
+    )
+
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [numericTarget, suffix, duration, isNumeric])
 
   return <span ref={ref}>{display}</span>
 }
