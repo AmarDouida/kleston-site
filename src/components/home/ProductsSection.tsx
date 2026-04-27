@@ -55,40 +55,45 @@ export async function ProductsSection({ locale }: ProductsSectionProps) {
           </Link>
         </div>
 
-        {/* Full-bleed card grid */}
+        {/* Full-bleed cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
           {products.map((product, i) => (
             <Link
               key={i}
               href={`/${locale}/${isFr ? 'produits' : 'products'}/${productSlugs[i]}`}
-              className="group relative overflow-hidden block"
-              style={{ minHeight: '480px' }}
+              className="group relative overflow-hidden flex flex-col min-h-[480px] border border-white/[0.08] hover:border-[#FF5C00] transition-colors duration-300"
             >
-              <Image
-                src={productImages[i]}
-                alt={product.name}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              />
-              {/* Dark overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#141414]/95 via-[#141414]/40 to-transparent" />
+              {/* Background image with dark overlay */}
+              <div className="absolute inset-0">
+                <Image
+                  src={productImages[i]}
+                  alt={product.name}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-[#141414]/70 to-[#141414]/30" />
+              </div>
 
-              {/* Roman numeral */}
-              <span className="absolute top-6 left-6 font-condensed font-black text-5xl text-white/15 leading-none">
+              {/* Roman numeral — orange/40 */}
+              <span
+                className="absolute top-5 left-6 font-condensed font-black leading-none select-none"
+                style={{ fontSize: '96px', color: 'rgba(255, 92, 0, 0.4)' }}
+              >
                 {ROMAN[i]}
               </span>
 
-              {/* Content */}
-              <div className="absolute bottom-0 left-0 right-0 p-7">
-                <h3 className="font-condensed font-black text-2xl uppercase tracking-tight text-white leading-tight mb-2">
+              {/* Content at bottom */}
+              <div className="relative z-10 mt-auto p-7">
+                <h3 className="font-condensed font-black text-[32px] uppercase tracking-tight text-white leading-tight mb-3">
                   {product.name}
                 </h3>
-                <p className="font-body text-sm text-[#B0B2B5] leading-relaxed mb-5">
+                <p className="font-body text-[15px] text-[#B0B2B5] leading-[1.6] mb-6">
                   {product.desc}
                 </p>
-                <span className="inline-flex items-center gap-2 font-condensed font-bold text-xs tracking-[0.15em] uppercase text-[#FF5C00] group-hover:gap-3 transition-all">
-                  {isFr ? 'Voir le produit' : 'View product'}
+                {/* CTA button */}
+                <span className="inline-flex items-center gap-2 font-condensed font-bold text-[12px] tracking-[0.15em] uppercase bg-[#FF5C00] group-hover:bg-[#CC4A00] text-white px-6 py-3 transition-colors duration-200">
+                  {isFr ? 'Découvrir' : 'Discover'}
                   <ArrowRight size={12} />
                 </span>
               </div>

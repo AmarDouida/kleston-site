@@ -74,7 +74,7 @@ export function ContactForm() {
           required
           value={formData.name}
           onChange={handleChange}
-          className="border border-[#D0D0CE] bg-white px-4 py-3 font-body text-sm text-[#1A1A1A] placeholder-[#A0A0A0] focus:border-[#FF5C00] focus:outline-none transition-colors"
+          className="border border-[#B0B2B5] bg-white px-4 py-3 font-body text-sm text-[#1A1A1A] placeholder-[#767676] focus:border-[#FF5C00] focus:outline-none transition-colors"
           placeholder={t('field_nom')}
         />
       </div>
@@ -91,7 +91,7 @@ export function ContactForm() {
           required
           value={formData.email}
           onChange={handleChange}
-          className="border border-[#D0D0CE] bg-white px-4 py-3 font-body text-sm text-[#1A1A1A] placeholder-[#A0A0A0] focus:border-[#FF5C00] focus:outline-none transition-colors"
+          className="border border-[#B0B2B5] bg-white px-4 py-3 font-body text-sm text-[#1A1A1A] placeholder-[#767676] focus:border-[#FF5C00] focus:outline-none transition-colors"
           placeholder={t('field_email')}
         />
       </div>
@@ -107,7 +107,7 @@ export function ContactForm() {
           type="text"
           value={formData.company}
           onChange={handleChange}
-          className="border border-[#D0D0CE] bg-white px-4 py-3 font-body text-sm text-[#1A1A1A] placeholder-[#A0A0A0] focus:border-[#FF5C00] focus:outline-none transition-colors"
+          className="border border-[#B0B2B5] bg-white px-4 py-3 font-body text-sm text-[#1A1A1A] placeholder-[#767676] focus:border-[#FF5C00] focus:outline-none transition-colors"
           placeholder={t('field_org')}
         />
       </div>
@@ -123,7 +123,7 @@ export function ContactForm() {
           type="tel"
           value={formData.phone}
           onChange={handleChange}
-          className="border border-[#D0D0CE] bg-white px-4 py-3 font-body text-sm text-[#1A1A1A] placeholder-[#A0A0A0] focus:border-[#FF5C00] focus:outline-none transition-colors"
+          className="border border-[#B0B2B5] bg-white px-4 py-3 font-body text-sm text-[#1A1A1A] placeholder-[#767676] focus:border-[#FF5C00] focus:outline-none transition-colors"
           placeholder={t('field_tel')}
         />
       </div>
@@ -140,7 +140,7 @@ export function ContactForm() {
           rows={6}
           value={formData.message}
           onChange={handleChange}
-          className="border border-[#D0D0CE] bg-white px-4 py-3 font-body text-sm text-[#1A1A1A] placeholder-[#A0A0A0] focus:border-[#FF5C00] focus:outline-none transition-colors resize-none"
+          className="border border-[#B0B2B5] bg-white px-4 py-3 font-body text-sm text-[#1A1A1A] placeholder-[#767676] focus:border-[#FF5C00] focus:outline-none transition-colors resize-none"
           placeholder={t('field_message_placeholder')}
         />
       </div>

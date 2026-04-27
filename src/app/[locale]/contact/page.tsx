@@ -76,7 +76,7 @@ export default async function ContactPage({
               <li className="flex items-start gap-4">
                 <Phone size={18} className="text-[#FF5C00] mt-0.5 shrink-0" />
                 <div>
-                  <p className="font-condensed font-bold text-xs tracking-wider uppercase text-[#7A7A7A] mb-1">
+                  <p className="font-condensed font-bold text-xs tracking-wider uppercase text-[#4A4A4A] mb-1">
                     {locale === 'fr' ? 'Téléphone' : 'Phone'}
                   </p>
                   <a
@@ -90,7 +90,7 @@ export default async function ContactPage({
               <li className="flex items-start gap-4">
                 <Mail size={18} className="text-[#FF5C00] mt-0.5 shrink-0" />
                 <div>
-                  <p className="font-condensed font-bold text-xs tracking-wider uppercase text-[#7A7A7A] mb-1">
+                  <p className="font-condensed font-bold text-xs tracking-wider uppercase text-[#4A4A4A] mb-1">
                     {locale === 'fr' ? 'Courriel' : 'Email'}
                   </p>
                   <a
@@ -104,7 +104,7 @@ export default async function ContactPage({
               <li className="flex items-start gap-4">
                 <MapPin size={18} className="text-[#FF5C00] mt-0.5 shrink-0" />
                 <div>
-                  <p className="font-condensed font-bold text-xs tracking-wider uppercase text-[#7A7A7A] mb-1">
+                  <p className="font-condensed font-bold text-xs tracking-wider uppercase text-[#4A4A4A] mb-1">
                     {locale === 'fr' ? 'Zone de service' : 'Service area'}
                   </p>
                   <p className="font-body text-base text-[#1A1A1A]">{t('info_zone')}</p>
@@ -113,7 +113,7 @@ export default async function ContactPage({
               <li className="flex items-start gap-4">
                 <Clock size={18} className="text-[#FF5C00] mt-0.5 shrink-0" />
                 <div>
-                  <p className="font-condensed font-bold text-xs tracking-wider uppercase text-[#7A7A7A] mb-1">
+                  <p className="font-condensed font-bold text-xs tracking-wider uppercase text-[#4A4A4A] mb-1">
                     {locale === 'fr' ? "Heures d'ouverture" : 'Business hours'}
                   </p>
                   <p className="font-body text-base text-[#1A1A1A]">{t('info_hours')}</p>

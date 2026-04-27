@@ -45,30 +45,34 @@ export async function ServicesSection({ locale }: ServicesSectionProps) {
           </Link>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-[#E0E0DE]">
+        {/* Cards grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
           {services.map((service, i) => (
-            <div key={i} className="bg-[#FAFAF8] group overflow-hidden">
-              {/* Image */}
-              <div className="relative h-48 overflow-hidden">
+            <div
+              key={i}
+              className="group bg-[#1F1F1F] border border-white/[0.08] hover:border-[#FF5C00] hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col"
+            >
+              {/* Image — 60% of card */}
+              <div className="relative h-[240px] overflow-hidden shrink-0">
                 <Image
                   src={serviceImages[i]}
                   alt={service.title}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 />
-                <div className="absolute inset-0 bg-[#141414]/40" />
-                <span className="absolute bottom-4 left-5 font-condensed font-black text-4xl text-white/20 leading-none">
+                <div className="absolute inset-0 bg-[#141414]/50" />
+              </div>
+
+              {/* Content */}
+              <div className="p-8 flex flex-col flex-1">
+                <span className="font-condensed font-black text-[14px] tracking-[0.3em] uppercase text-[#FF5C00] mb-4 block">
                   {service.num}
                 </span>
-              </div>
-              {/* Content */}
-              <div className="p-7 border border-t-0 border-[#E0E0DE]">
-                <h3 className="font-condensed font-black text-xl uppercase tracking-tight text-[#1A1A1A] mb-3">
+                <h3 className="font-condensed font-black text-[24px] uppercase tracking-tight text-white leading-tight mb-3">
                   {service.title}
                 </h3>
-                <p className="font-body text-sm text-[#4A4A4A] leading-relaxed">
+                <p className="font-body text-[15px] text-[#B0B2B5] leading-[1.6]">
                   {service.desc}
                 </p>
               </div>

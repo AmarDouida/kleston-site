@@ -6,7 +6,6 @@ import { routing } from '@/lib/i18n/routing'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { CookieBanner } from '@/components/layout/CookieBanner'
-import { CustomCursor } from '@/components/ui/CustomCursor'
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
@@ -90,7 +89,6 @@ export default async function LocaleLayout({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <CustomCursor />
       <Header locale={locale} />
       <main>{children}</main>
       <Footer locale={locale} />

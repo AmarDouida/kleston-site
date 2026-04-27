@@ -89,7 +89,7 @@ export default async function AProposPage({
               <p className="font-condensed font-black text-5xl md:text-6xl text-white leading-none">
                 {stat.value}
               </p>
-              <p className="font-body text-white/80 text-sm mt-2">{stat.label}</p>
+              <p className="font-body text-white text-sm mt-2">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -132,14 +132,14 @@ export default async function AProposPage({
       </div>
 
       {/* CTA */}
-      <div className="bg-[#1E1E1E] py-20">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex flex-col md:flex-row md:items-center justify-between gap-8">
-          <h2 className="font-condensed font-black text-4xl text-white uppercase leading-tight tracking-tight max-w-xl">
+      <div className="bg-[#1E1E1E] py-28 md:py-36">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex flex-col md:flex-row md:items-end justify-between gap-10">
+          <h2 className="font-condensed font-bold text-[40px] md:text-[72px] text-white uppercase leading-[1.05] tracking-tight">
             {isFr ? 'Travaillons ensemble.' : "Let's work together."}
           </h2>
           <Link
             href={`/${locale}/contact`}
-            className="inline-flex items-center gap-2 bg-[#FF5C00] text-white hover:bg-[#E05200] font-condensed font-bold text-sm tracking-[0.15em] uppercase px-10 py-4 transition-all duration-200 shrink-0"
+            className="inline-flex items-center gap-2 bg-[#FF5C00] text-white hover:bg-[#E05200] font-condensed font-bold text-sm tracking-[0.15em] uppercase px-10 py-4 transition-colors shrink-0"
           >
             {isFr ? 'Nous contacter' : 'Contact us'}
             <ArrowRight size={16} />
