@@ -27,6 +27,14 @@ export async function generateMetadata({
         'en-CA': 'https://kleston.ca/en/blog',
       },
     },
+    openGraph: {
+      title: isFr ? 'Blog Kleston — Conseils et normes' : 'Kleston Blog — Advice and Standards',
+      description: isFr
+        ? "Articles d'expertise sur les normes, l'accessibilité et la protection architecturale au Québec."
+        : 'Expert articles on standards, accessibility, and architectural protection in Quebec.',
+      url: `https://kleston.ca/${locale}/blog`,
+      images: [{ url: 'https://kleston.ca/images/og/kleston-og.jpg', width: 1200, height: 630 }],
+    },
   }
 }
 

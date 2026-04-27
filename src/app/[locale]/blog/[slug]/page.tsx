@@ -105,8 +105,31 @@ export default async function BlogPostPage({
     { year: 'numeric', month: 'long', day: 'numeric' },
   )
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    author: {
+      '@type': 'Organization',
+      name: 'Kleston',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Kleston',
+      url: 'https://kleston.ca',
+    },
+    url: `https://kleston.ca/${locale}/blog/${slug}`,
+    inLanguage: locale === 'fr' ? 'fr-CA' : 'en-CA',
+  }
+
   return (
     <main className="min-h-screen bg-[#FAFAF8]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Header */}
       <div className="bg-[#1E1E1E] py-20 md:py-28">
         <div className="max-w-4xl mx-auto px-6 md:px-12">

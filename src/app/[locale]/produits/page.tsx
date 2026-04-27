@@ -26,6 +26,14 @@ export async function generateMetadata({
         'en-CA': 'https://kleston.ca/en/products',
       },
     },
+    openGraph: {
+      title: isFr ? 'Produits Kleston — Mains courantes et protection murale' : 'Kleston Products — Handrails and Wall Protection',
+      description: isFr
+        ? 'Gammes de produits certifiés CE et ISO 9001 pour bâtiments commerciaux et institutionnels au Québec.'
+        : 'CE and ISO 9001 certified product ranges for commercial and institutional buildings in Quebec.',
+      url: `https://kleston.ca/${locale}/${isFr ? 'produits' : 'products'}`,
+      images: [{ url: 'https://kleston.ca/images/og/kleston-og.jpg', width: 1200, height: 630 }],
+    },
   }
 }
 

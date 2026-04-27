@@ -25,6 +25,14 @@ export async function generateMetadata({
         'en-CA': 'https://kleston.ca/en/services',
       },
     },
+    openGraph: {
+      title: isFr ? 'Services Kleston — Fourniture, installation et entretien' : 'Kleston Services — Supply, Installation and Maintenance',
+      description: isFr
+        ? 'Un seul interlocuteur pour votre projet de protection architecturale, du début à la fin.'
+        : 'One contact for your architectural protection project, from start to finish.',
+      url: `https://kleston.ca/${locale}/services`,
+      images: [{ url: 'https://kleston.ca/images/og/kleston-og.jpg', width: 1200, height: 630 }],
+    },
   }
 }
 

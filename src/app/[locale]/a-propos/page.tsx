@@ -24,6 +24,14 @@ export async function generateMetadata({
         'en-CA': 'https://kleston.ca/en/about',
       },
     },
+    openGraph: {
+      title: isFr ? 'À propos de Kleston — La conformité livrée et installée' : 'About Kleston — Compliance Delivered and Installed',
+      description: isFr
+        ? 'Spécialiste québécois en protection architecturale. Un seul partenaire de confiance pour votre projet.'
+        : 'Quebec specialist in architectural protection. One trusted partner for your project.',
+      url: `https://kleston.ca/${locale}/${isFr ? 'a-propos' : 'about'}`,
+      images: [{ url: 'https://kleston.ca/images/og/kleston-og.jpg', width: 1200, height: 630 }],
+    },
   }
 }
 

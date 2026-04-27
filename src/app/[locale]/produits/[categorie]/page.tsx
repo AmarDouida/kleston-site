@@ -35,6 +35,12 @@ export async function generateMetadata({
         'en-CA': `https://kleston.ca/en/products/${categorie}`,
       },
     },
+    openGraph: {
+      title: `${title} | Kleston`,
+      description,
+      url: `https://kleston.ca/${locale}/${isFr ? 'produits' : 'products'}/${categorie}`,
+      images: [{ url: 'https://kleston.ca/images/og/kleston-og.jpg', width: 1200, height: 630 }],
+    },
   }
 }
 
@@ -91,8 +97,42 @@ export default async function ProduitPage({
   const description = isFr ? produit.descriptionFr : produit.descriptionEn
   const applications = isFr ? produit.applications.fr : produit.applications.en
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: title,
+    description,
+    brand: {
+      '@type': 'Brand',
+      name: 'Kleston',
+    },
+    manufacturer: {
+      '@type': 'Organization',
+      name: 'Kleston',
+      url: 'https://kleston.ca',
+    },
+    hasEnergyConsumptionDetails: false,
+    additionalProperty: produit.certifications.map((cert) => ({
+      '@type': 'PropertyValue',
+      name: 'Certification',
+      value: cert,
+    })),
+    offers: {
+      '@type': 'Offer',
+      availability: 'https://schema.org/InStock',
+      seller: {
+        '@type': 'Organization',
+        name: 'Kleston',
+      },
+    },
+  }
+
   return (
     <main className="min-h-screen bg-[#FAFAF8]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Header */}
       <div className="bg-[#1E1E1E] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
@@ -124,6 +164,13 @@ export default async function ProduitPage({
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Product image placeholder */}
+      <div className="bg-[#E8E8E6] aspect-[21/6] w-full flex items-center justify-center">
+        <span className="font-condensed font-bold text-sm tracking-[0.2em] uppercase text-[#A0A0A0]">
+          {isFr ? 'Photo produit à venir' : 'Product photo coming soon'}
+        </span>
       </div>
 
       {/* Content grid */}

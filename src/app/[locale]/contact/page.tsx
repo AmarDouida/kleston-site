@@ -25,6 +25,14 @@ export async function generateMetadata({
         'en-CA': 'https://kleston.ca/en/contact',
       },
     },
+    openGraph: {
+      title: isFr ? 'Contactez Kleston — Devis gratuit en 24h' : 'Contact Kleston — Free Quote in 24h',
+      description: isFr
+        ? 'Réponse garantie sous 24h. Fourniture et installation partout au Québec.'
+        : 'Response guaranteed within 24h. Supply and installation across Quebec.',
+      url: `https://kleston.ca/${locale}/contact`,
+      images: [{ url: 'https://kleston.ca/images/og/kleston-og.jpg', width: 1200, height: 630 }],
+    },
   }
 }
 
