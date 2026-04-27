@@ -1,5 +1,14 @@
-import { useTranslations } from 'next-intl'
 import type { Metadata } from 'next'
+import { DoorAnimation } from '@/components/home/DoorAnimation'
+import { HeroSection } from '@/components/home/HeroSection'
+import { IntroSection } from '@/components/home/IntroSection'
+import { StatsSection } from '@/components/home/StatsSection'
+import { ServicesSection } from '@/components/home/ServicesSection'
+import { ProductsSection } from '@/components/home/ProductsSection'
+import { CertificationsSection } from '@/components/home/CertificationsSection'
+import { TestimonialsSection } from '@/components/home/TestimonialsSection'
+import { BlogPreviewSection } from '@/components/home/BlogPreviewSection'
+import { CTASection } from '@/components/home/CTASection'
 
 export async function generateMetadata({
   params,
@@ -42,30 +51,18 @@ export async function generateMetadata({
   }
 }
 
-function HomeContent() {
-  const t = useTranslations('hero')
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-[#1E1E1E]">
-      <div className="text-center px-6">
-        <svg viewBox="0 0 992 896" className="w-20 h-20 mx-auto mb-8">
-          <polygon
-            points="463 507 735 507 735 651 378 651 213 486 153 546 153 743 0 896 0 0 153 0 153 319 472 0 992 0 992 153 556 153 332.5 376.5 463 507"
-            fill="#FF5C00"
-          />
-          <path
-            d="M992,743l-153,153l-713,0l153,-153l560,0l0,-336l-560,0l153,-153l560,0l0,489Z"
-            fill="#B0B2B5"
-          />
-        </svg>
-        <h1 className="font-condensed font-black text-5xl md:text-7xl text-white uppercase tracking-tight mb-4">
-          KLESTON
-        </h1>
-        <p className="font-body text-[#B0B2B5] text-lg italic">{t('slogan')}</p>
-      </div>
-    </div>
-  )
-}
-
 export default function HomePage() {
-  return <HomeContent />
+  return (
+    <DoorAnimation>
+      <HeroSection />
+      <IntroSection />
+      <StatsSection />
+      <ServicesSection />
+      <ProductsSection />
+      <CertificationsSection />
+      <TestimonialsSection />
+      <BlogPreviewSection />
+      <CTASection />
+    </DoorAnimation>
+  )
 }
