@@ -101,7 +101,7 @@ export function IntroSection() {
                   <p className="font-condensed font-black text-white text-2xl leading-none">
                     100%
                   </p>
-                  <p className="font-condensed font-semibold text-white/80 text-xs tracking-widest uppercase">
+                  <p className="font-condensed font-bold text-white text-xs tracking-widest uppercase">
                     Certifié
                   </p>
                 </div>

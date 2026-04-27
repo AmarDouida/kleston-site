@@ -123,10 +123,10 @@ export function ProductsSection() {
                       className="text-[#FF5C00] opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-200"
                     />
                   </div>
-                  <h3 className="font-condensed font-bold text-xl uppercase tracking-wide text-[#1A1A1A] mb-3">
+                  <h3 className="font-condensed font-black text-xl uppercase tracking-wide text-[#1A1A1A] mb-3">
                     {p.name}
                   </h3>
-                  <p className="font-body text-sm text-[#7A7A7A] leading-relaxed mb-6">
+                  <p className="font-body text-sm text-[#4A4A4A] leading-relaxed mb-6">
                     {p.desc}
                   </p>
                   <div className="flex flex-wrap gap-2">

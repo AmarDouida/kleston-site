@@ -54,7 +54,7 @@ export function CTASection() {
 
           <motion.p
             variants={fadeInUp}
-            className="font-body text-white/80 text-lg md:text-xl mb-10"
+            className="font-body text-[#1E1E1E]/75 text-lg md:text-xl mb-10"
           >
             {t('subtitle')}
           </motion.p>

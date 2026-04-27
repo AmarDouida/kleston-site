@@ -68,8 +68,8 @@ export function HeroSection() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 2.8 }}
-          className="font-condensed font-semibold text-xs tracking-[0.3em] text-[#FF5C00] uppercase mb-5"
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="font-condensed font-bold text-xs tracking-[0.3em] text-[#FF5C00] uppercase mb-5"
         >
           {t('label')}
         </motion.p>
@@ -77,7 +77,7 @@ export function HeroSection() {
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 3.0 }}
+          transition={{ duration: 0.7, delay: 0.25 }}
           className="font-condensed font-black text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-white uppercase leading-[0.95] tracking-tight mb-5 max-w-3xl"
         >
           {t('title')}
@@ -86,15 +86,15 @@ export function HeroSection() {
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: '3rem' }}
-          transition={{ duration: 0.6, delay: 3.4 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
           className="h-0.5 bg-[#FF5C00] mb-5"
         />
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 3.6 }}
-          className="font-body font-light text-base md:text-lg text-[#B0B2B5] italic mb-8"
+          transition={{ duration: 0.6, delay: 0.65 }}
+          className="font-body text-base md:text-lg text-[#B0B2B5] mb-8"
         >
           {t('slogan')}
         </motion.p>
@@ -102,7 +102,7 @@ export function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 3.8 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
           className="flex flex-wrap gap-4"
         >
           <Link
@@ -127,7 +127,7 @@ export function HeroSection() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 4.2 }}
+        transition={{ duration: 0.6, delay: 1.2 }}
         className="absolute bottom-8 right-8 md:right-12 lg:right-20 flex flex-col items-center gap-2"
       >
         <span className="font-condensed text-xs tracking-[0.2em] text-white/40 uppercase -rotate-90 origin-center mb-6">

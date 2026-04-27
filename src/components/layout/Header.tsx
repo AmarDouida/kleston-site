@@ -129,7 +129,7 @@ export function Header({ locale }: { locale: string }) {
                 </Link>
                 <a
                   href="tel:5145508823"
-                  className="flex items-center justify-center gap-2 text-white/60 font-body text-sm"
+                  className="flex items-center justify-center gap-2 text-white/80 font-body text-sm"
                 >
                   <Phone size={14} />
                   514 550 8823

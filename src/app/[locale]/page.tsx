@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { DoorAnimation } from '@/components/home/DoorAnimation'
 import { HeroSection } from '@/components/home/HeroSection'
 import { IntroSection } from '@/components/home/IntroSection'
 import { StatsSection } from '@/components/home/StatsSection'
@@ -53,7 +52,7 @@ export async function generateMetadata({
 
 export default function HomePage() {
   return (
-    <DoorAnimation>
+    <>
       <HeroSection />
       <IntroSection />
       <StatsSection />
@@ -63,6 +62,6 @@ export default function HomePage() {
       <TestimonialsSection />
       <BlogPreviewSection />
       <CTASection />
-    </DoorAnimation>
+    </>
   )
 }

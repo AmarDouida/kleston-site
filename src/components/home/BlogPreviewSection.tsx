@@ -123,7 +123,7 @@ export function BlogPreviewSection() {
                 className="group flex flex-col h-full bg-white border border-[#E0E0DE] hover:border-[#FF5C00] p-8 transition-all duration-300"
               >
                 {/* Catégorie */}
-                <span className="font-condensed font-semibold text-xs tracking-[0.2em] uppercase text-[#FF5C00] mb-4">
+                <span className="font-condensed font-bold text-xs tracking-[0.2em] uppercase text-[#4A4A4A] mb-4">
                   {post.category}
                 </span>
 
@@ -133,13 +133,13 @@ export function BlogPreviewSection() {
                 </span>
 
                 {/* Titre */}
-                <h3 className="font-condensed font-bold text-lg uppercase tracking-wide text-[#1A1A1A] leading-tight mb-auto group-hover:text-[#FF5C00] transition-colors duration-200">
+                <h3 className="font-condensed font-black text-lg uppercase tracking-wide text-[#1A1A1A] leading-tight mb-auto group-hover:text-[#FF5C00] transition-colors duration-200">
                   {post.title}
                 </h3>
 
                 {/* Footer */}
                 <div className="flex items-center justify-between mt-6 pt-6 border-t border-[#E0E0DE]">
-                  <span className="flex items-center gap-1.5 font-body text-xs text-[#7A7A7A]">
+                  <span className="flex items-center gap-1.5 font-body text-xs text-[#5A5A5A]">
                     <Clock size={12} />
                     {post.readTime} {t('min_read')}
                   </span>

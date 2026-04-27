@@ -80,7 +80,7 @@ export function ServicesSection() {
                 <div className="w-10 h-10 bg-[#FF5C00]/10 flex items-center justify-center mb-6">
                   <Icon size={20} className="text-[#FF5C00]" />
                 </div>
-                <h3 className="font-condensed font-bold text-xl uppercase tracking-wide text-[#1A1A1A] mb-3">
+                <h3 className="font-condensed font-black text-xl uppercase tracking-wide text-[#1A1A1A] mb-3">
                   {s.title}
                 </h3>
                 <p className="font-body text-sm text-[#4A4A4A] leading-relaxed">

@@ -78,18 +78,18 @@ export function TestimonialsSection() {
               className="bg-white border border-[#E0E0DE] p-8 flex flex-col"
             >
               <Quote
-                size={28}
+                size={24}
                 className="text-[#FF5C00] mb-6 shrink-0"
                 fill="currentColor"
               />
-              <p className="font-body text-sm md:text-base text-[#4A4A4A] leading-relaxed flex-1 mb-8">
+              <p className="font-body text-sm md:text-base text-[#1A1A1A] leading-relaxed flex-1 mb-8">
                 {testi.text}
               </p>
               <div className="border-t border-[#E0E0DE] pt-6">
-                <p className="font-condensed font-bold text-sm uppercase tracking-wide text-[#1A1A1A]">
+                <p className="font-condensed font-black text-sm uppercase tracking-wide text-[#1A1A1A]">
                   {testi.name}
                 </p>
-                <p className="font-body text-xs text-[#7A7A7A] mt-1">
+                <p className="font-body text-xs text-[#5A5A5A] mt-1">
                   {testi.title} — {testi.company}
                 </p>
               </div>

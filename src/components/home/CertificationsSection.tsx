@@ -78,7 +78,7 @@ export function CertificationsSection() {
               <p className="font-condensed font-black text-2xl md:text-3xl text-white mb-1">
                 {cert.name}
               </p>
-              <p className="font-body text-xs text-[#7A7A7A] tracking-wide">
+              <p className="font-body text-xs text-[#B0B2B5] tracking-wide">
                 {cert.desc}
               </p>
             </motion.div>

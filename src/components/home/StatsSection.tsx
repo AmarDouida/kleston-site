@@ -57,7 +57,7 @@ export function StatsSection() {
                 )}
               </p>
               <div className="w-8 h-0.5 bg-[#FF5C00] mx-auto mb-3" />
-              <p className="font-condensed font-semibold text-xs tracking-[0.2em] uppercase text-[#B0B2B5]">
+              <p className="font-condensed text-xs tracking-[0.2em] uppercase text-[#B0B2B5]">
                 {stat.label}
               </p>
             </motion.div>
