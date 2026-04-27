@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
-import { getTranslations } from 'next-intl/server'
+import Image from 'next/image'
 import Link from 'next/link'
-import { Truck, Wrench, Settings, HeadphonesIcon, ArrowRight } from 'lucide-react'
-import { SectionLabel } from '@/components/ui/SectionLabel'
+import { getTranslations } from 'next-intl/server'
+import { ArrowRight, CheckCircle2 } from 'lucide-react'
+import { PageHero } from '@/components/ui/PageHero'
 
 export async function generateMetadata({
   params,
@@ -36,6 +37,13 @@ export async function generateMetadata({
   }
 }
 
+const serviceImages = [
+  'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1581092160562-40aa08e76a40?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1563396983906-b3795482a59a?auto=format&fit=crop&w=1200&q=80',
+  'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1200&q=80',
+]
+
 export default async function ServicesPage({
   params,
 }: {
@@ -47,7 +55,7 @@ export default async function ServicesPage({
 
   const services = [
     {
-      icon: <Truck size={32} className="text-[#FF5C00]" />,
+      num: '01',
       title: t('s1_title'),
       desc: t('s1_desc'),
       details: isFr
@@ -67,7 +75,7 @@ export default async function ServicesPage({
           ],
     },
     {
-      icon: <Wrench size={32} className="text-[#FF5C00]" />,
+      num: '02',
       title: t('s2_title'),
       desc: t('s2_desc'),
       details: isFr
@@ -87,7 +95,7 @@ export default async function ServicesPage({
           ],
     },
     {
-      icon: <Settings size={32} className="text-[#FF5C00]" />,
+      num: '03',
       title: t('s3_title'),
       desc: t('s3_desc'),
       details: isFr
@@ -107,7 +115,7 @@ export default async function ServicesPage({
           ],
     },
     {
-      icon: <HeadphonesIcon size={32} className="text-[#FF5C00]" />,
+      num: '04',
       title: t('s4_title'),
       desc: t('s4_desc'),
       details: isFr
@@ -115,7 +123,7 @@ export default async function ServicesPage({
             'Intervention rapide sur site',
             'Un seul interlocuteur dédié',
             'Délais garantis sous contrat',
-            'Disponible 5j/7, 8h-17h',
+            "Disponible 5j/7, 8h-17h",
             'Suivi de dossier en ligne',
           ]
         : [
@@ -130,51 +138,85 @@ export default async function ServicesPage({
 
   return (
     <main className="min-h-screen bg-[#FAFAF8]">
-      {/* Hero */}
-      <div className="bg-[#1E1E1E] py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <SectionLabel label={t('label')} light />
-          <h1 className="font-condensed font-black text-5xl md:text-6xl lg:text-7xl text-white uppercase leading-[0.9] tracking-tight mt-4 max-w-3xl">
-            {t('title')}
-          </h1>
-          <p className="font-body text-[#B0B2B5] text-lg mt-6 max-w-xl">
-            {t('subtitle')}
-          </p>
-        </div>
-      </div>
+      <PageHero
+        label={t('label')}
+        title={t('title')}
+        subtitle={t('subtitle')}
+      />
 
-      {/* Services */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 space-y-6">
-        {services.map((service, i) => (
-          <div
-            key={i}
-            className="bg-white border border-[#E0E0DE] p-10 grid grid-cols-1 md:grid-cols-3 gap-10"
-          >
-            <div className="md:col-span-1">
-              <div className="mb-6">{service.icon}</div>
-              <span className="font-condensed font-black text-6xl text-[#F0F0EE] leading-none">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <h2 className="font-condensed font-black text-2xl uppercase tracking-tight text-[#1A1A1A] mt-4">
-                {service.title}
-              </h2>
-            </div>
-            <div className="md:col-span-2">
-              <p className="font-body text-[#4A4A4A] text-base leading-relaxed mb-8">
-                {service.desc}
-              </p>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {service.details.map((detail) => (
-                  <li key={detail} className="flex items-start gap-2 font-body text-sm text-[#4A4A4A]">
-                    <span className="w-1.5 h-1.5 bg-[#FF5C00] rounded-full mt-2 shrink-0" />
-                    {detail}
-                  </li>
-                ))}
-              </ul>
+      {/* Alternating service sections */}
+      {services.map((service, i) => {
+        const isLight = i % 2 === 0
+        const bg = isLight ? 'bg-[#FAFAF8]' : 'bg-[#1E1E1E]'
+        const titleColor = isLight ? 'text-[#1A1A1A]' : 'text-white'
+        const bodyColor = isLight ? 'text-[#4A4A4A]' : 'text-[#B0B2B5]'
+        const numColor = isLight ? 'rgba(255,92,0,0.12)' : 'rgba(255,92,0,0.25)'
+
+        return (
+          <div key={i} className={bg}>
+            <div className={`grid grid-cols-1 lg:grid-cols-2`}>
+              {/* Image */}
+              <div
+                className={`relative min-h-[480px] lg:min-h-[560px] overflow-hidden ${!isLight ? 'lg:order-2' : ''}`}
+              >
+                <Image
+                  src={serviceImages[i]}
+                  alt={service.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div
+                  className={`absolute inset-0 ${isLight ? 'bg-[#141414]/30' : 'bg-[#141414]/50'}`}
+                />
+              </div>
+
+              {/* Content */}
+              <div
+                className={`relative overflow-hidden px-8 md:px-16 py-20 flex flex-col justify-center ${!isLight ? 'lg:order-1' : ''}`}
+              >
+                {/* Watermark number */}
+                <span
+                  className="absolute top-0 right-0 font-condensed font-black leading-none pointer-events-none select-none"
+                  style={{ fontSize: '180px', color: numColor, lineHeight: 1 }}
+                >
+                  {service.num}
+                </span>
+
+                <div className="relative z-10">
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className="block w-8 h-px bg-[#FF5C00]" />
+                    <span className="font-condensed font-bold text-xs tracking-[0.25em] uppercase text-[#FF5C00]">
+                      {service.num}
+                    </span>
+                  </div>
+
+                  <h2
+                    className={`font-condensed font-black text-4xl md:text-5xl uppercase tracking-tight ${titleColor} leading-[0.9] mb-6`}
+                  >
+                    {service.title}
+                  </h2>
+
+                  <p className={`font-body text-base leading-relaxed mb-8 max-w-md ${bodyColor}`}>
+                    {service.desc}
+                  </p>
+
+                  <ul className="space-y-3">
+                    {service.details.map((detail) => (
+                      <li key={detail} className="flex items-start gap-3">
+                        <CheckCircle2 size={16} className="text-[#FF5C00] mt-0.5 shrink-0" />
+                        <span className={`font-body text-sm leading-relaxed ${bodyColor}`}>
+                          {detail}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-        ))}
-      </div>
+        )
+      })}
 
       {/* CTA */}
       <div className="bg-[#FF5C00] py-20">

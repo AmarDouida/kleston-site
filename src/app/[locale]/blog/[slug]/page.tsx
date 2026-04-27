@@ -131,7 +131,7 @@ export default async function BlogPostPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       {/* Header */}
-      <div className="bg-[#1E1E1E] py-20 md:py-28">
+      <div className="bg-[#141414] pt-32 pb-16 md:pt-40 md:pb-20">
         <div className="max-w-4xl mx-auto px-6 md:px-12">
           <Link
             href={`/${locale}/blog`}
@@ -149,7 +149,7 @@ export default async function BlogPostPage({
             {post.title}
           </h1>
 
-          <div className="flex flex-wrap items-center gap-6 text-[#7A7A7A] font-body text-sm">
+          <div className="flex flex-wrap items-center gap-6 text-[#B0B2B5] font-body text-sm">
             <span className="flex items-center gap-2">
               <User size={14} />
               {post.author}

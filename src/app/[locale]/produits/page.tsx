@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
 import { ArrowRight, ShieldCheck } from 'lucide-react'
-import { SectionLabel } from '@/components/ui/SectionLabel'
-import { getAllProduits } from '@/lib/mdx'
+import { PageHero } from '@/components/ui/PageHero'
 
 export async function generateMetadata({
   params,
@@ -37,6 +37,22 @@ export async function generateMetadata({
   }
 }
 
+const ROMAN = ['I', 'II', 'III', 'IV']
+
+const productImages = [
+  'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1504355987722-5f1e6c3e5498?auto=format&fit=crop&w=800&q=80',
+]
+
+const productSlugs = [
+  'mains-courantes',
+  'protection-murale',
+  'barrieres-garde-corps',
+  'accessoires-fixation',
+]
+
 export default async function ProduitsPage({
   params,
 }: {
@@ -44,85 +60,90 @@ export default async function ProduitsPage({
 }) {
   const { locale } = await params
   const t = await getTranslations('produits')
-  const produits = getAllProduits()
+  const isFr = locale === 'fr'
 
   const gammes = [
-    {
-      slug: 'mains-courantes',
-      name: locale === 'fr' ? 'Mains courantes' : 'Handrails',
-      desc: locale === 'fr'
-        ? 'Inox, aluminium, nylon ou bois. Conformes aux normes CNB et CCQ. Plus de 30 coloris disponibles.'
-        : 'Stainless steel, aluminum, nylon, or wood. Compliant with NBC and CCQ. Over 30 colors available.',
-    },
-    {
-      slug: 'protection-murale',
-      name: locale === 'fr' ? 'Protection murale' : 'Wall Protection',
-      desc: locale === 'fr'
-        ? "Lisses, protecteurs d'angle, pare-chocs de portes. Certifiés EN 14876. Résistance aux chocs jusqu'à 800 J."
-        : 'Bumper rails, corner protectors, door guards. EN 14876 certified. Impact resistance up to 800 J.',
-    },
-    {
-      slug: 'barrieres-garde-corps',
-      name: locale === 'fr' ? 'Barrières et garde-corps' : 'Barriers & Guardrails',
-      desc: locale === 'fr'
-        ? 'Garde-corps en acier, aluminium ou avec remplissage verre. Conformes CNB art. 3.3.1.'
-        : 'Steel, aluminum, or glass-infill guardrails. Compliant with NBC art. 3.3.1.',
-    },
-    {
-      slug: 'accessoires-fixation',
-      name: locale === 'fr' ? 'Accessoires et fixation' : 'Accessories & Fasteners',
-      desc: locale === 'fr'
-        ? 'Supports muraux, raccords, embouts, platines. Compatibles avec tous les systèmes Kleston.'
-        : 'Wall brackets, connectors, end caps, mounting plates. Compatible with all Kleston systems.',
-    },
+    { name: t('g1_name'), desc: t('g1_desc') },
+    { name: t('g2_name'), desc: t('g2_desc') },
+    { name: t('g3_name'), desc: t('g3_desc') },
+    { name: t('g4_name'), desc: t('g4_desc') },
   ]
 
   return (
-    <main className="min-h-screen bg-[#FAFAF8]">
-      {/* Hero */}
-      <div className="bg-[#1E1E1E] py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <SectionLabel label={t('label')} light />
-          <h1 className="font-condensed font-black text-5xl md:text-6xl lg:text-7xl text-white uppercase leading-[0.9] tracking-tight mt-4 max-w-3xl">
-            {t('title')}
-          </h1>
-          <p className="font-body text-[#B0B2B5] text-lg mt-6 max-w-xl">
-            {t('subtitle')}
-          </p>
-        </div>
-      </div>
+    <main className="min-h-screen bg-[#141414]">
+      <PageHero
+        label={t('label')}
+        title={t('title')}
+        subtitle={t('subtitle')}
+      />
 
-      {/* Gammes */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Products grid */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
           {gammes.map((gamme, i) => (
             <Link
-              key={gamme.slug}
-              href={`/${locale}/${locale === 'fr' ? 'produits' : 'products'}/${gamme.slug}`}
-              className="group flex flex-col bg-white border border-[#E0E0DE] hover:border-[#FF5C00] p-10 transition-all duration-300"
+              key={productSlugs[i]}
+              href={`/${locale}/${isFr ? 'produits' : 'products'}/${productSlugs[i]}`}
+              className="group relative overflow-hidden flex flex-col min-h-[420px] border border-white/[0.08] hover:border-[#FF5C00] transition-colors duration-300"
             >
-              <span className="font-condensed font-black text-7xl text-[#F0F0EE] leading-none mb-6 group-hover:text-[#FF5C00]/10 transition-colors duration-300">
-                {String(i + 1).padStart(2, '0')}
+              {/* Background image */}
+              <div className="absolute inset-0">
+                <Image
+                  src={productImages[i]}
+                  alt={gamme.name}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-[#141414]/70 to-[#141414]/30" />
+              </div>
+
+              {/* Roman numeral */}
+              <span
+                className="absolute top-5 left-6 font-condensed font-black leading-none select-none"
+                style={{ fontSize: '96px', color: 'rgba(255, 92, 0, 0.4)' }}
+              >
+                {ROMAN[i]}
               </span>
-              <h2 className="font-condensed font-black text-2xl md:text-3xl uppercase tracking-tight text-[#1A1A1A] mb-4 group-hover:text-[#FF5C00] transition-colors duration-200">
-                {gamme.name}
-              </h2>
-              <p className="font-body text-[#4A4A4A] text-sm leading-relaxed mb-8 flex-1">
-                {gamme.desc}
-              </p>
-              <div className="flex items-center justify-between pt-6 border-t border-[#E0E0DE]">
-                <div className="flex items-center gap-2 text-[#FF5C00]">
-                  <ShieldCheck size={14} />
-                  <span className="font-condensed font-bold text-xs tracking-wider uppercase">
+
+              {/* Content */}
+              <div className="relative z-10 mt-auto p-8">
+                {/* Certifications badge */}
+                <div className="flex items-center gap-2 mb-4">
+                  <ShieldCheck size={14} className="text-[#FF5C00]" />
+                  <span className="font-condensed font-bold text-xs tracking-[0.15em] uppercase text-[#FF5C00]">
                     CE · ISO 9001
                   </span>
                 </div>
-                <span className="font-condensed font-bold text-xs tracking-wider uppercase text-[#FF5C00] opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center gap-1">
-                  {locale === 'fr' ? 'Voir la gamme' : 'View range'}
+
+                <h2 className="font-condensed font-black text-[28px] md:text-[32px] uppercase tracking-tight text-white leading-tight mb-3">
+                  {gamme.name}
+                </h2>
+                <p className="font-body text-[15px] text-[#B0B2B5] leading-[1.6] mb-6">
+                  {gamme.desc}
+                </p>
+
+                <span className="inline-flex items-center gap-2 font-condensed font-bold text-[12px] tracking-[0.15em] uppercase bg-[#FF5C00] group-hover:bg-[#CC4A00] text-white px-6 py-3 transition-colors duration-200">
+                  {isFr ? 'Voir la gamme' : 'View range'}
                   <ArrowRight size={12} />
                 </span>
               </div>
             </Link>
+          ))}
+        </div>
+
+        {/* Certifications strip */}
+        <div className="mt-12 border border-white/[0.08] p-8 flex flex-wrap items-center gap-6">
+          <p className="font-condensed font-bold text-xs tracking-[0.2em] uppercase text-[#FF5C00]">
+            {isFr ? 'Certifications' : 'Certifications'}
+          </p>
+          {['CE', 'ISO 9001', 'ROHS', 'VOC Free', 'Antibactérien', 'Feu B1'].map((cert) => (
+            <span
+              key={cert}
+              className="font-condensed font-bold text-xs tracking-wider uppercase border border-white/20 text-[#B0B2B5] px-3 py-1.5"
+            >
+              {cert}
+            </span>
           ))}
         </div>
       </div>

@@ -47,27 +47,27 @@ export async function generateMetadata({
 const mdxComponents = {
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
-      className="font-condensed font-black text-2xl md:text-3xl uppercase tracking-tight text-[#1A1A1A] mt-10 mb-5 leading-tight"
+      className="font-condensed font-black text-2xl md:text-3xl uppercase tracking-tight text-white mt-10 mb-5 leading-tight"
       {...props}
     />
   ),
   h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
-      className="font-condensed font-bold text-lg uppercase tracking-wide text-[#1A1A1A] mt-6 mb-3"
+      className="font-condensed font-bold text-lg uppercase tracking-wide text-white mt-6 mb-3"
       {...props}
     />
   ),
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="font-body text-[#4A4A4A] text-base leading-relaxed mb-4" {...props} />
+    <p className="font-body text-[#B0B2B5] text-base leading-relaxed mb-4" {...props} />
   ),
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className="font-body text-[#4A4A4A] text-base leading-relaxed mb-4 list-disc pl-6 space-y-1" {...props} />
+    <ul className="font-body text-[#B0B2B5] text-base leading-relaxed mb-4 list-disc pl-6 space-y-1" {...props} />
   ),
   li: (props: React.HTMLAttributes<HTMLLIElement>) => (
     <li className="leading-relaxed" {...props} />
   ),
   strong: (props: React.HTMLAttributes<HTMLElement>) => (
-    <strong className="font-bold text-[#1A1A1A]" {...props} />
+    <strong className="font-bold text-white" {...props} />
   ),
   table: (props: React.HTMLAttributes<HTMLTableElement>) => (
     <div className="overflow-x-auto mb-6">
@@ -75,10 +75,10 @@ const mdxComponents = {
     </div>
   ),
   th: (props: React.HTMLAttributes<HTMLTableCellElement>) => (
-    <th className="font-condensed font-bold text-xs uppercase tracking-wider text-white bg-[#1A1A1A] px-4 py-2 text-left" {...props} />
+    <th className="font-condensed font-bold text-xs uppercase tracking-wider text-white bg-[#FF5C00] px-4 py-2 text-left" {...props} />
   ),
   td: (props: React.HTMLAttributes<HTMLTableCellElement>) => (
-    <td className="px-4 py-2 border-b border-[#E0E0DE] text-[#4A4A4A]" {...props} />
+    <td className="px-4 py-2 border-b border-white/[0.08] text-[#B0B2B5]" {...props} />
   ),
 }
 
@@ -102,16 +102,8 @@ export default async function ProduitPage({
     '@type': 'Product',
     name: title,
     description,
-    brand: {
-      '@type': 'Brand',
-      name: 'Kleston',
-    },
-    manufacturer: {
-      '@type': 'Organization',
-      name: 'Kleston',
-      url: 'https://kleston.ca',
-    },
-    hasEnergyConsumptionDetails: false,
+    brand: { '@type': 'Brand', name: 'Kleston' },
+    manufacturer: { '@type': 'Organization', name: 'Kleston', url: 'https://kleston.ca' },
     additionalProperty: produit.certifications.map((cert) => ({
       '@type': 'PropertyValue',
       name: 'Certification',
@@ -120,21 +112,19 @@ export default async function ProduitPage({
     offers: {
       '@type': 'Offer',
       availability: 'https://schema.org/InStock',
-      seller: {
-        '@type': 'Organization',
-        name: 'Kleston',
-      },
+      seller: { '@type': 'Organization', name: 'Kleston' },
     },
   }
 
   return (
-    <main className="min-h-screen bg-[#FAFAF8]">
+    <main className="min-h-screen bg-[#141414]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {/* Header */}
-      <div className="bg-[#1E1E1E] py-20 md:py-28">
+
+      {/* Hero */}
+      <div className="bg-[#141414] pt-32 pb-16 md:pt-40 md:pb-20 border-b border-white/[0.06]">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <Link
             href={`/${locale}/${isFr ? 'produits' : 'products'}`}
@@ -144,14 +134,14 @@ export default async function ProduitPage({
             {isFr ? 'Tous les produits' : 'All products'}
           </Link>
 
-          <h1 className="font-condensed font-black text-5xl md:text-6xl lg:text-7xl text-white uppercase leading-[0.9] tracking-tight mb-6">
+          <h1 className="font-condensed font-black text-[clamp(48px,7vw,80px)] text-white uppercase leading-[0.88] tracking-tight mb-6">
             {title}
           </h1>
-          <p className="font-body text-[#B0B2B5] text-lg max-w-2xl">
+          <p className="font-body text-[#B0B2B5] text-lg max-w-2xl leading-relaxed">
             {description}
           </p>
 
-          {/* Certs */}
+          {/* Certifications */}
           <div className="flex flex-wrap gap-3 mt-8">
             {produit.certifications.map((cert) => (
               <span
@@ -166,30 +156,30 @@ export default async function ProduitPage({
         </div>
       </div>
 
-      {/* Product image placeholder */}
-      <div className="bg-[#E8E8E6] aspect-[21/6] w-full flex items-center justify-center">
-        <span className="font-condensed font-bold text-sm tracking-[0.2em] uppercase text-[#A0A0A0]">
+      {/* Image placeholder */}
+      <div className="bg-[#1E1E1E] aspect-[21/6] w-full flex items-center justify-center border-b border-white/[0.06]">
+        <span className="font-condensed font-bold text-sm tracking-[0.2em] uppercase text-[#4A4A4A]">
           {isFr ? 'Photo produit à venir' : 'Product photo coming soon'}
         </span>
       </div>
 
       {/* Content grid */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-16 grid grid-cols-1 lg:grid-cols-3 gap-12">
-        {/* Main content */}
+        {/* MDX content */}
         <div className="lg:col-span-2">
           <MDXRemote source={produit.content} components={mdxComponents} />
         </div>
 
         {/* Sidebar */}
-        <div className="space-y-8">
-          {/* Matériaux */}
-          <div className="bg-white border border-[#E0E0DE] p-8">
-            <h3 className="font-condensed font-black text-lg uppercase tracking-tight text-[#1A1A1A] mb-5">
+        <div className="space-y-1">
+          {/* Materials */}
+          <div className="bg-[#1E1E1E] border border-white/[0.08] p-8">
+            <h3 className="font-condensed font-black text-lg uppercase tracking-tight text-white mb-5">
               {isFr ? 'Matériaux' : 'Materials'}
             </h3>
             <ul className="space-y-3">
               {produit.materials.map((mat) => (
-                <li key={mat} className="flex items-start gap-2 font-body text-sm text-[#4A4A4A]">
+                <li key={mat} className="flex items-start gap-2 font-body text-sm text-[#B0B2B5]">
                   <CheckCircle2 size={14} className="text-[#FF5C00] mt-0.5 shrink-0" />
                   {mat}
                 </li>
@@ -198,13 +188,13 @@ export default async function ProduitPage({
           </div>
 
           {/* Applications */}
-          <div className="bg-white border border-[#E0E0DE] p-8">
-            <h3 className="font-condensed font-black text-lg uppercase tracking-tight text-[#1A1A1A] mb-5">
+          <div className="bg-[#1E1E1E] border border-white/[0.08] p-8">
+            <h3 className="font-condensed font-black text-lg uppercase tracking-tight text-white mb-5">
               {isFr ? 'Applications' : 'Applications'}
             </h3>
             <ul className="space-y-3">
               {applications.map((app) => (
-                <li key={app} className="flex items-start gap-2 font-body text-sm text-[#4A4A4A]">
+                <li key={app} className="flex items-start gap-2 font-body text-sm text-[#B0B2B5]">
                   <CheckCircle2 size={14} className="text-[#FF5C00] mt-0.5 shrink-0" />
                   {app}
                 </li>
@@ -217,7 +207,7 @@ export default async function ProduitPage({
             <h3 className="font-condensed font-black text-xl uppercase tracking-tight text-white mb-3">
               {isFr ? 'Demander un devis' : 'Request a quote'}
             </h3>
-            <p className="font-body text-white/80 text-sm mb-6">
+            <p className="font-body text-white/90 text-sm mb-6">
               {isFr
                 ? 'Réponse sous 24h. Livraison partout au Québec.'
                 : 'Response within 24h. Delivery across Quebec.'}

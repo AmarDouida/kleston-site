@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
-import { useTranslations } from 'next-intl'
-import { getTranslations } from 'next-intl/server'
+import Image from 'next/image'
 import Link from 'next/link'
-import { Clock, ArrowRight } from 'lucide-react'
-import { SectionLabel } from '@/components/ui/SectionLabel'
+import { getTranslations } from 'next-intl/server'
+import { Clock, ArrowRight, Calendar } from 'lucide-react'
+import { PageHero } from '@/components/ui/PageHero'
 import { getAllPosts } from '@/lib/mdx'
+import { BLOG_IMAGES, BLOG_IMAGE_FALLBACK } from '@/lib/blog-images'
 
 export async function generateMetadata({
   params,
@@ -38,65 +39,97 @@ export async function generateMetadata({
   }
 }
 
-function BlogPageContent({ locale }: { locale: string }) {
-  const t = useTranslations('blog')
-  const posts = getAllPosts(locale as 'fr' | 'en')
-
-  return (
-    <main className="min-h-screen bg-[#FAFAF8]">
-      {/* Hero */}
-      <div className="bg-[#1E1E1E] py-24 md:py-32">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <SectionLabel label={t('label')} light />
-          <h1 className="font-condensed font-black text-5xl md:text-6xl lg:text-7xl text-white uppercase leading-[0.9] tracking-tight mt-4 max-w-2xl">
-            {t('title')}
-          </h1>
-          <p className="font-body text-[#B0B2B5] text-lg mt-6 max-w-xl">
-            {t('subtitle')}
-          </p>
-        </div>
-      </div>
-
-      {/* Articles */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {posts.map((post, i) => (
-            <Link
-              key={post.slug}
-              href={`/${locale}/blog/${post.slug}`}
-              className="group flex flex-col bg-white border border-[#E0E0DE] hover:border-[#FF5C00] p-8 transition-all duration-300"
-            >
-              <span className="font-condensed font-semibold text-xs tracking-[0.2em] uppercase text-[#FF5C00] mb-4">
-                {post.category}
-              </span>
-              <span className="font-condensed font-black text-6xl text-[#F0F0EE] leading-none mb-4 group-hover:text-[#FF5C00]/10 transition-colors duration-300">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <h2 className="font-condensed font-bold text-lg uppercase tracking-wide text-[#1A1A1A] leading-tight mb-auto group-hover:text-[#FF5C00] transition-colors duration-200">
-                {post.title}
-              </h2>
-              <div className="flex items-center justify-between mt-6 pt-6 border-t border-[#E0E0DE]">
-                <span className="flex items-center gap-1.5 font-body text-xs text-[#7A7A7A]">
-                  <Clock size={12} />
-                  {post.readTime} {t('min_read')}
-                </span>
-                <span className="font-condensed font-bold text-xs tracking-wider uppercase text-[#FF5C00] opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center gap-1">
-                  {t('read_more')} <ArrowRight size={12} />
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </main>
-  )
-}
-
 export default async function BlogPage({
   params,
 }: {
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
-  return <BlogPageContent locale={locale} />
+  const t = await getTranslations('blog')
+  const posts = getAllPosts(locale as 'fr' | 'en')
+
+  return (
+    <main className="min-h-screen bg-[#FAFAF8]">
+      <PageHero
+        label={t('label')}
+        title={t('title')}
+        subtitle={t('subtitle')}
+      />
+
+      {/* Articles grid */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-16">
+        {posts.length === 0 ? (
+          <p className="font-body text-[#4A4A4A] text-base">
+            {locale === 'fr' ? 'Aucun article pour le moment.' : 'No articles yet.'}
+          </p>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+            {posts.map((post) => {
+              const img = BLOG_IMAGES[post.slug] ?? BLOG_IMAGE_FALLBACK
+              const formattedDate = new Date(post.date).toLocaleDateString(
+                locale === 'fr' ? 'fr-CA' : 'en-CA',
+                { year: 'numeric', month: 'short', day: 'numeric' },
+              )
+              return (
+                <article
+                  key={post.slug}
+                  className="bg-white border border-[#E0E0DE] group overflow-hidden flex flex-col hover:border-[#FF5C00] transition-colors duration-300"
+                >
+                  {/* Cover image */}
+                  <Link href={`/${locale}/blog/${post.slug}`} className="block relative aspect-[16/10] overflow-hidden shrink-0">
+                    <Image
+                      src={img}
+                      alt={post.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                  </Link>
+
+                  {/* Body */}
+                  <div className="p-7 flex flex-col flex-1">
+                    {/* Meta */}
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="font-condensed font-bold text-xs tracking-[0.15em] uppercase text-[#FF5C00]">
+                        {post.category}
+                      </span>
+                      <span className="block w-1 h-1 bg-[#B0B2B5]" />
+                      <span className="flex items-center gap-1.5 font-body text-xs text-[#4A4A4A]">
+                        <Clock size={11} />
+                        {post.readTime} {t('min_read')}
+                      </span>
+                    </div>
+
+                    <Link href={`/${locale}/blog/${post.slug}`}>
+                      <h2 className="font-condensed font-black text-[22px] uppercase tracking-tight text-[#1A1A1A] leading-tight mb-3 group-hover:text-[#FF5C00] transition-colors">
+                        {post.title}
+                      </h2>
+                    </Link>
+
+                    <p className="font-body text-[14px] text-[#4A4A4A] leading-relaxed mb-5 line-clamp-2 flex-1">
+                      {post.description}
+                    </p>
+
+                    <div className="flex items-center justify-between pt-5 border-t border-[#E0E0DE] mt-auto">
+                      <span className="flex items-center gap-1.5 font-body text-xs text-[#4A4A4A]">
+                        <Calendar size={11} />
+                        {formattedDate}
+                      </span>
+                      <Link
+                        href={`/${locale}/blog/${post.slug}`}
+                        className="inline-flex items-center gap-1.5 font-condensed font-bold text-xs tracking-[0.15em] uppercase text-[#1A1A1A] hover:text-[#FF5C00] transition-colors"
+                      >
+                        {t('read_more')}
+                        <ArrowRight size={11} />
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              )
+            })}
+          </div>
+        )}
+      </div>
+    </main>
+  )
 }
