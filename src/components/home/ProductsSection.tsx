@@ -41,7 +41,7 @@ export async function ProductsSection({ locale }: ProductsSectionProps) {
             return (
               <Link
                 key={cat.id}
-                href={`/${locale}/${isFr ? 'produits' : 'products'}/${cat.id}`}
+                href={`/${locale}/${isFr ? 'produits' : 'products'}?categorie=${cat.id}`}
                 className="group relative overflow-hidden flex flex-col min-h-[480px] border border-white/[0.08] hover:border-[#FF5C00] transition-colors duration-300"
               >
                 <div className="absolute inset-0">

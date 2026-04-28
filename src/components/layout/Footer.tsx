@@ -19,10 +19,10 @@ export async function Footer({ locale }: FooterProps) {
   ]
 
   const productLinks = [
-    { href: `/${locale}/${isFr ? 'produits' : 'products'}/mains-courantes`, label: t('p1') },
-    { href: `/${locale}/${isFr ? 'produits' : 'products'}/protection-murale`, label: t('p2') },
-    { href: `/${locale}/${isFr ? 'produits' : 'products'}/barrieres-garde-corps`, label: t('p3') },
-    { href: `/${locale}/${isFr ? 'produits' : 'products'}/accessoires-fixation`, label: t('p4') },
+    { href: `/${locale}/${isFr ? 'produits' : 'products'}?categorie=mains-courantes`, label: t('p1') },
+    { href: `/${locale}/${isFr ? 'produits' : 'products'}?categorie=main-courante-protection-murale`, label: t('p2') },
+    { href: `/${locale}/${isFr ? 'produits' : 'products'}?categorie=protection-murale-antichoc`, label: t('p3') },
+    { href: `/${locale}/${isFr ? 'produits' : 'products'}?categorie=protection-angle`, label: t('p4') },
   ]
 
   const certifications = ['CE', 'ISO 9001', 'ROHS', 'VOC Free', 'Antibactérien', 'Feu B1']
