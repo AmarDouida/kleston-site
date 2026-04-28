@@ -52,7 +52,7 @@ export function ContactForm() {
     return (
       <div className="flex flex-col items-center justify-center py-20 gap-6 text-center">
         <CheckCircle size={56} className="text-[#FF5C00]" />
-        <h3 className="font-condensed font-black text-3xl uppercase tracking-tight text-[#1A1A1A]">
+        <h3 className="font-condensed font-bold text-3xl uppercase tracking-tight text-[#1A1A1A]">
           {t('success_title')}
         </h3>
         <p className="font-body text-[#4A4A4A] max-w-sm">{t('success_text')}</p>

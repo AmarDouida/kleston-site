@@ -54,7 +54,7 @@ export function Header({ locale }: HeaderProps) {
           {/* Logo */}
           <Link
             href={`/${locale}`}
-            className="font-condensed font-black text-2xl tracking-tight text-white uppercase"
+            className="font-condensed font-bold text-2xl tracking-tight text-white uppercase"
             onClick={() => setMenuOpen(false)}
           >
             Kleston
@@ -120,7 +120,7 @@ export function Header({ locale }: HeaderProps) {
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="font-condensed font-black text-5xl uppercase tracking-tight text-white hover:text-[#FF5C00] transition-colors py-2 border-b border-white/[0.06]"
+              className="font-condensed font-bold text-5xl uppercase tracking-tight text-white hover:text-[#FF5C00] transition-colors py-2 border-b border-white/[0.06]"
               style={{ transitionDelay: menuOpen ? `${i * 50}ms` : '0ms' }}
             >
               {link.label}
@@ -129,7 +129,7 @@ export function Header({ locale }: HeaderProps) {
           <Link
             href={`/${locale}/contact`}
             onClick={() => setMenuOpen(false)}
-            className="font-condensed font-black text-5xl uppercase tracking-tight text-[#FF5C00] hover:text-white transition-colors py-2 border-b border-white/[0.06]"
+            className="font-condensed font-bold text-5xl uppercase tracking-tight text-[#FF5C00] hover:text-white transition-colors py-2 border-b border-white/[0.06]"
             style={{ transitionDelay: menuOpen ? `${navLinks.length * 50}ms` : '0ms' }}
           >
             {t('contact')}

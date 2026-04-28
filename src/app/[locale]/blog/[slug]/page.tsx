@@ -39,7 +39,7 @@ export async function generateMetadata({
 const mdxComponents = {
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
-      className="font-condensed font-black text-3xl md:text-4xl uppercase tracking-tight text-[#1A1A1A] mt-12 mb-6 leading-tight"
+      className="font-condensed font-bold text-3xl md:text-4xl uppercase tracking-tight text-[#1A1A1A] mt-12 mb-6 leading-tight"
       {...props}
     />
   ),
@@ -145,7 +145,7 @@ export default async function BlogPostPage({
             {post.category}
           </span>
 
-          <h1 className="font-condensed font-black text-4xl md:text-5xl lg:text-6xl text-white uppercase leading-[0.95] tracking-tight mb-8">
+          <h1 className="font-condensed font-bold text-[clamp(40px,6vw,64px)] text-white uppercase leading-[1] tracking-[0em] mb-8">
             {post.title}
           </h1>
 

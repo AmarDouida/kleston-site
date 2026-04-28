@@ -47,7 +47,7 @@ export async function generateMetadata({
 const mdxComponents = {
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
-      className="font-condensed font-black text-2xl md:text-3xl uppercase tracking-tight text-white mt-10 mb-5 leading-tight"
+      className="font-condensed font-bold text-2xl md:text-3xl uppercase tracking-tight text-white mt-10 mb-5 leading-tight"
       {...props}
     />
   ),
@@ -134,7 +134,7 @@ export default async function ProduitPage({
             {isFr ? 'Tous les produits' : 'All products'}
           </Link>
 
-          <h1 className="font-condensed font-black text-[clamp(48px,7vw,80px)] text-white uppercase leading-[0.88] tracking-tight mb-6">
+          <h1 className="font-condensed font-bold text-[clamp(40px,6vw,64px)] text-white uppercase leading-[1] tracking-[0em] mb-6">
             {title}
           </h1>
           <p className="font-body text-[#B0B2B5] text-lg max-w-2xl leading-relaxed">
@@ -174,7 +174,7 @@ export default async function ProduitPage({
         <div className="space-y-1">
           {/* Materials */}
           <div className="bg-[#1E1E1E] border border-white/[0.08] p-8">
-            <h3 className="font-condensed font-black text-lg uppercase tracking-tight text-white mb-5">
+            <h3 className="font-condensed font-bold text-lg uppercase tracking-tight text-white mb-5">
               {isFr ? 'Matériaux' : 'Materials'}
             </h3>
             <ul className="space-y-3">
@@ -189,7 +189,7 @@ export default async function ProduitPage({
 
           {/* Applications */}
           <div className="bg-[#1E1E1E] border border-white/[0.08] p-8">
-            <h3 className="font-condensed font-black text-lg uppercase tracking-tight text-white mb-5">
+            <h3 className="font-condensed font-bold text-lg uppercase tracking-tight text-white mb-5">
               {isFr ? 'Applications' : 'Applications'}
             </h3>
             <ul className="space-y-3">
@@ -204,7 +204,7 @@ export default async function ProduitPage({
 
           {/* CTA */}
           <div className="bg-[#FF5C00] p-8">
-            <h3 className="font-condensed font-black text-xl uppercase tracking-tight text-white mb-3">
+            <h3 className="font-condensed font-bold text-xl uppercase tracking-tight text-white mb-3">
               {isFr ? 'Demander un devis' : 'Request a quote'}
             </h3>
             <p className="font-body text-white/90 text-sm mb-6">

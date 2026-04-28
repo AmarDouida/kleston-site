@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, ShieldCheck } from 'lucide-react'
+import { ArrowRight, PackageOpen, Wrench, ShieldCheck } from 'lucide-react'
 import { PageHero } from '@/components/ui/PageHero'
 import { SectionLabel } from '@/components/ui/SectionLabel'
+import { CertificationsGrid } from '@/components/ui/CertificationsGrid'
 
 export async function generateMetadata({
   params,
@@ -45,34 +46,47 @@ export default async function AProposPage({
   const { locale } = await params
   const isFr = locale === 'fr'
 
-  const values = isFr
+  const approachCards = isFr
     ? [
-        { title: 'Conformité', desc: 'Chaque produit livré est certifié CE et conforme aux normes CNB et CCQ en vigueur.' },
-        { title: 'Expertise locale', desc: 'Nous connaissons les spécificités du marché québécois, de la réglementation aux conditions climatiques.' },
-        { title: 'Service complet', desc: 'Fourniture, installation, entretien : un seul interlocuteur pour votre projet du début à la fin.' },
-        { title: 'Réactivité', desc: "Devis sous 24h, livraison dans les délais, intervention rapide en cas d'urgence." },
+        {
+          Icon: PackageOpen,
+          title: 'Importation directe',
+          desc: "Nous sourceons directement auprès des meilleurs fabricants européens, sans intermédiaire. Résultat : des prix compétitifs sur des produits certifiés CE et ISO 9001.",
+        },
+        {
+          Icon: Wrench,
+          title: 'Service intégré',
+          desc: "Fourniture, installation et entretien sous un seul toit. Un seul interlocuteur de la sélection des produits à l'attestation de conformité finale.",
+        },
+        {
+          Icon: ShieldCheck,
+          title: 'Conformité garantie',
+          desc: "Tous nos produits respectent les normes CNB, CCQ et les directives européennes en vigueur. Chaque livraison est accompagnée de son attestation de conformité.",
+        },
       ]
     : [
-        { title: 'Compliance', desc: 'Every product delivered is CE certified and compliant with current NBC and CCQ standards.' },
-        { title: 'Local expertise', desc: 'We know the specificities of the Quebec market, from regulations to climate conditions.' },
-        { title: 'Full service', desc: 'Supply, installation, maintenance: one contact for your project from start to finish.' },
-        { title: 'Responsiveness', desc: 'Quotes within 24h, on-time delivery, rapid response in emergencies.' },
+        {
+          Icon: PackageOpen,
+          title: 'Direct import',
+          desc: 'We source directly from the best European manufacturers, without intermediaries. Result: competitive prices on CE and ISO 9001 certified products.',
+        },
+        {
+          Icon: Wrench,
+          title: 'Integrated service',
+          desc: 'Supply, installation, and maintenance under one roof. One contact from product selection to the final compliance certificate.',
+        },
+        {
+          Icon: ShieldCheck,
+          title: 'Guaranteed compliance',
+          desc: 'All our products meet current NBC, CCQ standards and European directives. Every delivery comes with its compliance certificate.',
+        },
       ]
 
-  const stats = [
-    { value: '15+', label: isFr ? "ans d'expérience" : 'years of experience' },
-    { value: '500+', label: isFr ? 'projets livrés' : 'projects delivered' },
-    { value: '100%', label: isFr ? 'certifié CE' : 'CE certified' },
-    { value: '24h', label: isFr ? 'délai de réponse' : 'response time' },
-  ]
-
-  const certifications = [
-    { code: 'CE', desc: isFr ? 'Conformité européenne' : 'European compliance' },
-    { code: 'ISO 9001', desc: isFr ? 'Management qualité' : 'Quality management' },
-    { code: 'ROHS', desc: isFr ? 'Sans métaux lourds' : 'Heavy metal free' },
-    { code: 'VOC Free', desc: isFr ? 'Absence de gaz nocifs' : 'No harmful gases' },
-    { code: 'Antibactérien', desc: isFr ? 'Certifié TÜBITAK' : 'TÜBITAK certified' },
-    { code: 'Feu B1', desc: isFr ? 'Résistance au feu' : 'Fire resistance' },
+  const darkStats = [
+    { value: '32', label: isFr ? 'coloris disponibles' : 'available colors' },
+    { value: '4', label: isFr ? 'gammes certifiées' : 'certified ranges' },
+    { value: '100%', label: isFr ? 'conforme aux normes' : 'standards compliant' },
+    { value: '24h', label: isFr ? 'délai de réponse garanti' : 'guaranteed response time' },
   ]
 
   return (
@@ -87,27 +101,25 @@ export default async function AProposPage({
         }
       />
 
-      {/* Stats strip */}
-      <div className="bg-[#FF5C00]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10">
-          {stats.map((stat) => (
-            <div key={stat.value} className="bg-[#FF5C00] py-14 px-6 text-center">
-              <p className="font-condensed font-black text-5xl md:text-6xl text-white leading-none">
-                {stat.value}
-              </p>
-              <p className="font-body text-white text-sm mt-2">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Mission — image + text */}
-      <div className="bg-[#F5F1EA] py-24 md:py-32">
+      {/* Notre mission — image left / text right */}
+      <div className="bg-white border-b border-[#E0DBD0] py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Image */}
+          <div className="relative aspect-[4/5] overflow-hidden">
+            <Image
+              src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=80"
+              alt={isFr ? 'Couloir architectural moderne' : 'Modern architectural corridor'}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#FF5C00]" />
+          </div>
+
           {/* Text */}
           <div>
             <SectionLabel label={isFr ? 'Notre mission' : 'Our mission'} />
-            <h2 className="font-condensed font-black text-4xl md:text-5xl uppercase tracking-tight text-[#1A1A1A] leading-tight mt-5 mb-8">
+            <h2 className="font-condensed font-bold text-[clamp(32px,4vw,48px)] uppercase tracking-[0em] text-[#1A1A1A] leading-[1.05] mt-5 mb-8">
               {isFr ? 'Un seul partenaire, de A à Z.' : 'One partner, A to Z.'}
             </h2>
             <div className="space-y-5 font-body text-[#4A4A4A] text-base leading-relaxed">
@@ -123,39 +135,27 @@ export default async function AProposPage({
               </p>
             </div>
           </div>
-
-          {/* Image */}
-          <div className="relative aspect-[4/5] overflow-hidden">
-            <Image
-              src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=80"
-              alt={isFr ? 'Couloir architectural moderne' : 'Modern architectural corridor'}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-            <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#FF5C00]" />
-          </div>
         </div>
       </div>
 
-      {/* Values */}
-      <div className="bg-[#1E1E1E] py-24">
+      {/* Notre approche en 3 points */}
+      <div className="bg-[#EBE7DE] py-24">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="mb-12">
-            <SectionLabel label={isFr ? 'Nos valeurs' : 'Our values'} light />
-            <h2 className="font-condensed font-black text-4xl md:text-5xl uppercase tracking-tight text-white leading-tight mt-4">
-              {isFr ? 'Ce qui nous distingue' : 'What sets us apart'}
+            <SectionLabel label={isFr ? 'Notre approche' : 'Our approach'} />
+            <h2 className="font-condensed font-bold text-[clamp(32px,4vw,48px)] uppercase tracking-[0em] text-[#1A1A1A] leading-[1.05] mt-4">
+              {isFr ? 'Comment nous travaillons' : 'How we work'}
             </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-1">
-            {values.map((value) => (
-              <div key={value.title} className="bg-[#252525] border border-white/[0.06] p-8">
-                <ShieldCheck size={24} className="text-[#FF5C00] mb-5" />
-                <h3 className="font-condensed font-black text-xl uppercase tracking-tight text-white mb-3">
-                  {value.title}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-1">
+            {approachCards.map(({ Icon, title, desc }) => (
+              <div key={title} className="bg-white border border-[#E0DBD0] p-10">
+                <Icon size={32} className="text-[#FF5C00] mb-6" />
+                <h3 className="font-condensed font-bold text-xl uppercase tracking-[0em] text-[#1A1A1A] mb-4">
+                  {title}
                 </h3>
-                <p className="font-body text-sm text-[#B0B2B5] leading-relaxed">
-                  {value.desc}
+                <p className="font-body text-[14px] text-[#4A4A4A] leading-relaxed">
+                  {desc}
                 </p>
               </div>
             ))}
@@ -166,27 +166,44 @@ export default async function AProposPage({
       {/* Certifications */}
       <div className="bg-[#F5F1EA] py-20">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
-          <div className="mb-10">
-            <SectionLabel label={isFr ? 'Certifications' : 'Certifications'} />
-            <h2 className="font-condensed font-black text-4xl uppercase tracking-tight text-[#1A1A1A] leading-tight mt-4">
-              {isFr ? 'Des produits qui respectent les normes les plus strictes' : 'Products meeting the strictest standards'}
-            </h2>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-1">
-            {certifications.map((cert) => (
-              <div key={cert.code} className="bg-white border border-[#E0E0DE] p-6 text-center">
-                <p className="font-condensed font-black text-2xl text-[#1A1A1A] mb-2">{cert.code}</p>
-                <p className="font-body text-xs text-[#4A4A4A] leading-snug">{cert.desc}</p>
-              </div>
-            ))}
-          </div>
+          <CertificationsGrid isFr={isFr} showSection />
+        </div>
+      </div>
+
+      {/* Stats sombres */}
+      <div className="bg-[#141414]">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 grid grid-cols-2 md:grid-cols-4 gap-px bg-white/[0.05]">
+          {darkStats.map((stat) => (
+            <div key={stat.value} className="bg-[#141414] py-16 px-6 text-center">
+              <p className="font-condensed font-black text-[clamp(48px,6vw,72px)] text-white leading-none">
+                {stat.value}
+              </p>
+              <p className="font-body text-[#B0B2B5] text-sm mt-3 leading-snug">{stat.label}</p>
+              <span className="block w-6 h-px bg-[#FF5C00] mx-auto mt-4" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Notre engagement qualité */}
+      <div className="bg-[#F5F1EA] py-24">
+        <div className="max-w-3xl mx-auto px-6 md:px-12 text-center">
+          <SectionLabel label={isFr ? 'Engagement qualité' : 'Quality commitment'} />
+          <h2 className="font-condensed font-bold text-[clamp(28px,3.5vw,40px)] uppercase tracking-[0em] text-[#1A1A1A] leading-[1.05] mt-4 mb-6">
+            {isFr ? "L'excellence, pas l'exception." : 'Excellence, not the exception.'}
+          </h2>
+          <p className="font-body text-[#4A4A4A] text-base leading-relaxed">
+            {isFr
+              ? "Chez Kleston, la qualité n'est pas un argument commercial — c'est notre standard minimum. Chaque produit que nous livrons a été sélectionné, testé et certifié selon les normes les plus strictes. Chaque installation est réalisée par des techniciens formés et vérifiée avant réception. Nous ne livrons que ce que nous serions fiers d'installer dans nos propres bâtiments."
+              : "At Kleston, quality is not a sales pitch — it's our minimum standard. Every product we deliver has been selected, tested, and certified to the strictest standards. Every installation is performed by trained technicians and verified before handover. We only deliver what we would be proud to install in our own buildings."}
+          </p>
         </div>
       </div>
 
       {/* CTA */}
       <div className="bg-[#1E1E1E] py-28 md:py-36">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex flex-col md:flex-row md:items-end justify-between gap-10">
-          <h2 className="font-condensed font-bold text-[40px] md:text-[72px] text-white uppercase leading-[1.05] tracking-tight">
+          <h2 className="font-condensed font-bold text-[clamp(40px,6vw,72px)] text-white uppercase leading-[1.0] tracking-[0em]">
             {isFr ? 'Travaillons ensemble.' : "Let's work together."}
           </h2>
           <Link

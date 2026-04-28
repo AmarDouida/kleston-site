@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { getTranslations } from 'next-intl/server'
 import { ArrowRight, ShieldCheck } from 'lucide-react'
 import { PageHero } from '@/components/ui/PageHero'
+import { CertificationsGrid } from '@/components/ui/CertificationsGrid'
 
 export async function generateMetadata({
   params,
@@ -106,7 +107,7 @@ export default async function ProduitsPage({
                   </span>
                 </div>
 
-                <h2 className="font-condensed font-black text-[28px] md:text-[32px] uppercase tracking-tight text-white leading-tight mb-3">
+                <h2 className="font-condensed font-normal text-[28px] uppercase tracking-tight text-white leading-tight mb-3">
                   {gamme.name}
                 </h2>
                 <p className="font-body text-[15px] text-[#B0B2B5] leading-[1.6] mb-6">
@@ -122,19 +123,12 @@ export default async function ProduitsPage({
           ))}
         </div>
 
-        {/* Certifications strip */}
-        <div className="mt-12 border border-white/[0.08] p-8 flex flex-wrap items-center gap-6">
-          <p className="font-condensed font-bold text-xs tracking-[0.2em] uppercase text-[#FF5C00]">
-            {isFr ? 'Certifications' : 'Certifications'}
-          </p>
-          {['CE', 'ISO 9001', 'ROHS', 'VOC Free', 'Antibactérien', 'Feu B1'].map((cert) => (
-            <span
-              key={cert}
-              className="font-condensed font-bold text-xs tracking-wider uppercase border border-white/20 text-[#B0B2B5] px-3 py-1.5"
-            >
-              {cert}
-            </span>
-          ))}
+      </div>
+
+      {/* Certifications section */}
+      <div className="bg-[#F5F1EA] py-20">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
+          <CertificationsGrid isFr={isFr} showSection />
         </div>
       </div>
     </main>

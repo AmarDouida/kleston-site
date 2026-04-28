@@ -34,7 +34,7 @@ export async function Footer({ locale }: FooterProps) {
         <div>
           <Link
             href={`/${locale}`}
-            className="font-condensed font-black text-2xl tracking-tight text-white uppercase"
+            className="font-condensed font-bold text-2xl tracking-tight text-white uppercase"
           >
             Kleston
           </Link>

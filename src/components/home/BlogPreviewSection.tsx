@@ -22,7 +22,7 @@ export async function BlogPreviewSection({ locale, posts }: BlogPreviewSectionPr
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
           <div>
             <SectionLabel label={t('label')} />
-            <h2 className="font-condensed font-black text-5xl md:text-6xl uppercase tracking-tight text-[#1A1A1A] leading-[0.9] mt-4">
+            <h2 className="font-condensed font-bold text-[clamp(32px,4vw,48px)] uppercase tracking-[0em] text-[#1A1A1A] leading-[0.9] mt-4">
               {t('title')}
             </h2>
           </div>
@@ -39,7 +39,7 @@ export async function BlogPreviewSection({ locale, posts }: BlogPreviewSectionPr
           {posts.map((post) => {
             const img = BLOG_IMAGES[post.slug] ?? BLOG_IMAGE_FALLBACK
             return (
-              <article key={post.slug} className="bg-white border border-[#E0E0DE] group overflow-hidden flex flex-col">
+              <article key={post.slug} className="bg-white border border-[#E0E0DE] group overflow-hidden flex flex-col shadow-[0_4px_16px_-4px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.12)] hover:-translate-y-1 hover:border-[#FF5C00] transition-all duration-300">
                 {/* Cover image — 16:10 */}
                 <Link href={`/${locale}/blog/${post.slug}`} className="block relative aspect-[16/10] overflow-hidden shrink-0">
                   <Image

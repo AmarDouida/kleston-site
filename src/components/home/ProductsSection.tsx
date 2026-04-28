@@ -40,7 +40,7 @@ export async function ProductsSection({ locale }: ProductsSectionProps) {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
           <div>
             <SectionLabel label={t('label')} light />
-            <h2 className="font-condensed font-black text-5xl md:text-6xl uppercase tracking-tight text-white leading-[0.9] mt-4">
+            <h2 className="font-condensed font-bold text-[clamp(32px,4vw,48px)] uppercase tracking-[0em] text-white leading-[0.9] mt-4">
               {t('title')}
             </h2>
           </div>
@@ -75,7 +75,7 @@ export async function ProductsSection({ locale }: ProductsSectionProps) {
 
               {/* Content at bottom */}
               <div className="relative z-10 mt-auto p-7">
-                <h3 className="font-condensed font-black text-[32px] uppercase tracking-tight text-white leading-tight mb-3">
+                <h3 className="font-condensed font-normal text-[28px] uppercase tracking-tight text-white leading-tight mb-3">
                   {product.name}
                 </h3>
                 <p className="font-body text-[15px] text-[#B0B2B5] leading-[1.6] mb-6">

@@ -73,7 +73,7 @@ export default async function BlogPage({
               return (
                 <article
                   key={post.slug}
-                  className="bg-white border border-[#E0E0DE] group overflow-hidden flex flex-col hover:border-[#FF5C00] transition-colors duration-300"
+                  className="bg-white border border-[#E0E0DE] group overflow-hidden flex flex-col shadow-[0_4px_16px_-4px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_32px_-8px_rgba(0,0,0,0.12)] hover:-translate-y-1 hover:border-[#FF5C00] transition-all duration-300"
                 >
                   {/* Cover image */}
                   <Link href={`/${locale}/blog/${post.slug}`} className="block relative aspect-[16/10] overflow-hidden shrink-0">
@@ -101,7 +101,7 @@ export default async function BlogPage({
                     </div>
 
                     <Link href={`/${locale}/blog/${post.slug}`}>
-                      <h2 className="font-condensed font-black text-[22px] uppercase tracking-tight text-[#1A1A1A] leading-tight mb-3 group-hover:text-[#FF5C00] transition-colors">
+                      <h2 className="font-condensed font-normal text-[22px] uppercase tracking-tight text-[#1A1A1A] leading-tight mb-3 group-hover:text-[#FF5C00] transition-colors">
                         {post.title}
                       </h2>
                     </Link>

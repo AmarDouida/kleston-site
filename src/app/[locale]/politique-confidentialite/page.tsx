@@ -111,7 +111,7 @@ export default async function PolitiqueConfidentialitePage({
   return (
     <main className="min-h-screen bg-[#F5F1EA]">
       <div className="max-w-4xl mx-auto px-6 md:px-12 py-20 md:py-32">
-        <h1 className="font-condensed font-black text-4xl md:text-5xl uppercase tracking-tight text-[#1A1A1A] mb-3">
+        <h1 className="font-condensed font-bold text-[clamp(40px,6vw,64px)] uppercase tracking-[0em] text-[#1A1A1A] leading-[1] mb-3">
           {t('title')}
         </h1>
         <p className="font-body text-sm text-[#7A7A7A] mb-16">

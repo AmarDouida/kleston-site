@@ -18,14 +18,14 @@ export function IntroSection({ locale }: IntroSectionProps) {
   const points = [t('point1'), t('point2'), t('point3'), t('point4')]
 
   return (
-    <section className="bg-[#F5F1EA] py-24 md:py-32">
+    <section className="bg-white border-t border-b border-[#E0DBD0] py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         {/* Top grid: text left, image right */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Text */}
           <div>
             <SectionLabel label={t('label')} />
-            <h2 className="font-condensed font-black text-5xl md:text-6xl uppercase tracking-tight text-[#1A1A1A] leading-[0.9] mt-5 mb-8">
+            <h2 className="font-condensed font-bold text-[clamp(32px,4vw,48px)] uppercase tracking-[0em] text-[#1A1A1A] leading-[0.9] mt-5 mb-8">
               {t('title')}
             </h2>
             <p className="font-body text-[#4A4A4A] text-base leading-relaxed max-w-xl">

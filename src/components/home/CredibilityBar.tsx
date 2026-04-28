@@ -17,15 +17,15 @@ export async function CredibilityBar() {
   const allItems = [...items, ...items]
 
   return (
-    <div className="bg-[#141414] border-y border-white/[0.06] overflow-hidden py-5">
+    <div className="bg-[#141414] border-y border-white/[0.06] overflow-hidden py-12">
       <div className="flex animate-marquee w-max">
         {allItems.map((item, i) => (
           <div
             key={i}
-            className="flex items-center gap-3 px-10 border-r border-white/[0.08] shrink-0"
+            className="flex items-center gap-3 px-24 border-r border-[#FF5C00]/40 shrink-0"
           >
-            <ShieldCheck size={14} className="text-[#FF5C00] shrink-0" />
-            <span className="font-condensed font-black text-sm uppercase tracking-widest text-white whitespace-nowrap">
+            <ShieldCheck size={16} className="text-[#FF5C00] shrink-0" />
+            <span className="font-condensed font-bold text-lg uppercase tracking-widest text-white whitespace-nowrap">
               {item.code}
             </span>
             <span className="font-body text-xs text-[#B0B2B5] whitespace-nowrap">

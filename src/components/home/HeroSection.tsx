@@ -63,7 +63,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
         </motion.div>
 
         {/* Word-by-word animated title */}
-        <h1 className="font-condensed font-black text-[clamp(42px,8vw,96px)] text-white uppercase leading-[0.88] tracking-tight max-w-4xl">
+        <h1 className="font-condensed font-bold text-[clamp(48px,7.5vw,80px)] text-white uppercase leading-[0.95] tracking-[0em] max-w-4xl">
           {words.map((word, i) => (
             <span key={i} className="inline-block overflow-hidden align-bottom mr-[0.22em] last:mr-0">
               <motion.span

@@ -8,7 +8,7 @@ export default function NotFound() {
         <div className="text-center max-w-lg">
           {/* KS watermark */}
           <div className="relative mb-12">
-            <span className="font-condensed font-black text-[180px] md:text-[240px] text-white/5 leading-none select-none">
+            <span className="font-condensed font-bold text-[180px] md:text-[240px] text-white/5 leading-none select-none">
               404
             </span>
             <div className="absolute inset-0 flex items-center justify-center">
@@ -16,7 +16,7 @@ export default function NotFound() {
             </div>
           </div>
 
-          <h1 className="font-condensed font-black text-4xl md:text-5xl text-white uppercase leading-tight tracking-tight mb-4">
+          <h1 className="font-condensed font-bold text-4xl md:text-5xl text-white uppercase leading-tight tracking-tight mb-4">
             Page introuvable
           </h1>
           <p className="font-body text-[#B0B2B5] text-base mb-10">

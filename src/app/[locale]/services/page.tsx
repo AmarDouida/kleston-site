@@ -173,7 +173,7 @@ export default async function ServicesPage({
                 {/* Step index */}
                 <div className="hidden md:flex flex-col items-center">
                   <div className="w-20 h-20 bg-[#FF5C00] flex items-center justify-center shrink-0 z-10">
-                    <span className="font-condensed font-black text-2xl text-white tracking-[0.1em]">
+                    <span className="font-condensed font-bold text-2xl text-white tracking-[0.1em]">
                       {service.num}
                     </span>
                   </div>
@@ -184,12 +184,12 @@ export default async function ServicesPage({
                   {/* Mobile step number */}
                   <div className="flex items-center gap-3 mb-5 md:hidden">
                     <div className="w-10 h-10 bg-[#FF5C00] flex items-center justify-center shrink-0">
-                      <span className="font-condensed font-black text-sm text-white">{service.num}</span>
+                      <span className="font-condensed font-bold text-sm text-white">{service.num}</span>
                     </div>
                     <div className="h-px flex-1 bg-[#FF5C00]/30" />
                   </div>
 
-                  <h2 className="font-condensed font-black text-4xl md:text-5xl uppercase tracking-tight text-[#1A1A1A] leading-[0.9] mb-5">
+                  <h2 className="font-condensed font-bold text-[clamp(32px,4vw,48px)] uppercase tracking-[0em] text-[#1A1A1A] leading-[0.9] mb-5">
                     {service.title}
                   </h2>
                   <p className="font-body text-base text-[#4A4A4A] leading-relaxed mb-8 max-w-lg">
@@ -227,7 +227,7 @@ export default async function ServicesPage({
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="mb-12">
             <SectionLabel label={isFr ? 'Pourquoi Kleston' : 'Why Kleston'} light />
-            <h2 className="font-condensed font-black text-4xl md:text-5xl uppercase tracking-tight text-white leading-tight mt-4">
+            <h2 className="font-condensed font-bold text-[clamp(32px,4vw,48px)] uppercase tracking-[0em] text-white leading-tight mt-4">
               {isFr ? 'Un seul partenaire de confiance' : 'One trusted partner'}
             </h2>
           </div>
@@ -235,7 +235,7 @@ export default async function ServicesPage({
             {whyCards.map((card) => (
               <div key={card.title} className="bg-[#252525] border border-white/[0.06] p-8">
                 <span className="text-2xl mb-5 block">{card.icon}</span>
-                <h3 className="font-condensed font-black text-xl uppercase tracking-tight text-white mb-3">
+                <h3 className="font-condensed font-bold text-xl uppercase tracking-tight text-white mb-3">
                   {card.title}
                 </h3>
                 <p className="font-body text-sm text-[#B0B2B5] leading-relaxed">
@@ -250,7 +250,7 @@ export default async function ServicesPage({
       {/* CTA */}
       <div className="bg-[#FF5C00] py-20">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 flex flex-col md:flex-row md:items-center justify-between gap-8">
-          <h2 className="font-condensed font-black text-4xl md:text-5xl text-white uppercase leading-tight tracking-tight max-w-xl">
+          <h2 className="font-condensed font-bold text-4xl md:text-5xl text-white uppercase leading-tight tracking-tight max-w-xl">
             {isFr ? 'Prêt à démarrer votre projet ?' : 'Ready to start your project?'}
           </h2>
           <Link
