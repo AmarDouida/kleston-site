@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, ArrowLeft, CheckCircle2, Download } from 'lucide-react'
 import {
   produits,
   getCategorieById,
@@ -57,7 +57,7 @@ export default async function ProduitPage({
 
   const isFr = locale === 'fr'
   const basePath = `/${locale}/${isFr ? 'produits' : 'products'}`
-  const categoryPath = `${basePath}/${categorie}`
+  const categoryPath = `${basePath}?categorie=${categorie}`
 
   const nom = isFr ? p.nom.fr : p.nom.en
   const desc = isFr ? p.description.fr : p.description.en
@@ -248,12 +248,14 @@ export default async function ProduitPage({
                 {isFr ? 'Demander un devis' : 'Request a quote'}
                 <ArrowRight size={13} />
               </Link>
-              <Link
-                href={categoryPath}
+              <a
+                href={`/fiches-techniques/${p.ref}.pdf`}
+                download
                 className="flex-1 flex items-center justify-center gap-2 border border-[#1A1A1A] text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white font-condensed font-bold text-[13px] tracking-[0.15em] uppercase py-4 transition-colors duration-200"
               >
-                {isFr ? 'Voir la gamme' : 'View range'}
-              </Link>
+                <Download size={13} />
+                {isFr ? 'Télécharger la fiche' : 'Download spec sheet'}
+              </a>
             </div>
           </div>
         </div>

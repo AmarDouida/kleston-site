@@ -41,13 +41,15 @@ export function Header({ locale }: HeaderProps) {
     { href: `/${locale}/${isFr ? 'a-propos' : 'about'}`, label: t('about') },
   ]
 
+  const isHome = pathname === `/${locale}` || pathname === `/${locale}/`
+
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled || menuOpen
-            ? 'bg-[#141414] border-b border-white/[0.08]'
-            : 'bg-transparent'
+          isHome && !scrolled && !menuOpen
+            ? 'bg-transparent'
+            : 'bg-[#141414]/95 backdrop-blur-md border-b border-white/[0.08]'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 h-16 md:h-20 flex items-center justify-between">
