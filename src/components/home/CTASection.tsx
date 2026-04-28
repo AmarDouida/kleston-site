@@ -31,7 +31,7 @@ export async function CTASection({ locale }: CTASectionProps) {
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 lg:px-20 text-center">
         <SectionLabel label={t('label')} light />
 
-        <h2 className="font-condensed font-black text-[clamp(48px,8vw,96px)] text-white uppercase leading-[0.88] tracking-tight mt-6 mb-8 max-w-4xl mx-auto">
+        <h2 className="font-condensed font-black text-[clamp(48px,8vw,96px)] text-white uppercase leading-[0.88] tracking-[0.01em] mt-6 mb-8 max-w-4xl mx-auto">
           {t('title')}
         </h2>
 

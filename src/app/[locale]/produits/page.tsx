@@ -37,8 +37,6 @@ export async function generateMetadata({
   }
 }
 
-const ROMAN = ['I', 'II', 'III', 'IV']
-
 const productImages = [
   'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80',
   'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80',
@@ -97,14 +95,6 @@ export default async function ProduitsPage({
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-[#141414]/70 to-[#141414]/30" />
               </div>
-
-              {/* Roman numeral */}
-              <span
-                className="absolute top-5 left-6 font-condensed font-black leading-none select-none"
-                style={{ fontSize: '96px', color: 'rgba(255, 92, 0, 0.4)' }}
-              >
-                {ROMAN[i]}
-              </span>
 
               {/* Content */}
               <div className="relative z-10 mt-auto p-8">

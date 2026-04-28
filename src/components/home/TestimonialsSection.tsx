@@ -31,7 +31,7 @@ export async function TestimonialsSection() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         <div className="mb-14">
           <SectionLabel label={t('label')} light />
-          <h2 className="font-condensed font-black text-5xl md:text-6xl uppercase tracking-tight text-white leading-[0.9] mt-4">
+          <h2 className="font-condensed font-bold text-5xl md:text-6xl uppercase tracking-tight text-white leading-[0.9] mt-4">
             {t('title')}
           </h2>
         </div>
@@ -47,10 +47,10 @@ export async function TestimonialsSection() {
                 &ldquo;{testimonial.text}&rdquo;
               </p>
               <div className="border-t border-white/[0.08] pt-6">
-                <p className="font-condensed font-black text-base uppercase tracking-tight text-white">
+                <p className="font-condensed font-normal text-base uppercase tracking-tight text-white">
                   {testimonial.name}
                 </p>
-                <p className="font-body text-xs text-[#7A7A7A] mt-1">
+                <p className="font-body text-xs text-[#B0B2B5] mt-1">
                   {testimonial.title} — {testimonial.company}
                 </p>
               </div>

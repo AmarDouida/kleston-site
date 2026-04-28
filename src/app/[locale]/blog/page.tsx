@@ -49,7 +49,7 @@ export default async function BlogPage({
   const posts = getAllPosts(locale as 'fr' | 'en')
 
   return (
-    <main className="min-h-screen bg-[#FAFAF8]">
+    <main className="min-h-screen bg-[#F5F1EA]">
       <PageHero
         label={t('label')}
         title={t('title')}

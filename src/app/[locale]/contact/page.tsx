@@ -73,7 +73,7 @@ export default async function ContactPage({
   ]
 
   return (
-    <main className="min-h-screen bg-[#FAFAF8]">
+    <main className="min-h-screen bg-[#F5F1EA]">
       <PageHero
         label={t('label')}
         title={t('title')}
@@ -83,7 +83,7 @@ export default async function ContactPage({
       {/* Contact grid */}
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Form — 2/3 width */}
-        <div className="lg:col-span-2 bg-white border border-[#E0E0DE] p-8 md:p-12">
+        <div className="lg:col-span-2 bg-white border border-[#E0E0DE] shadow-sm p-8 md:p-12">
           <h2 className="font-condensed font-black text-2xl uppercase tracking-tight text-[#1A1A1A] mb-8">
             {isFr ? 'Votre message' : 'Your message'}
           </h2>

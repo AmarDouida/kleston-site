@@ -18,7 +18,7 @@ export function IntroSection({ locale }: IntroSectionProps) {
   const points = [t('point1'), t('point2'), t('point3'), t('point4')]
 
   return (
-    <section className="bg-[#FAFAF8] py-24 md:py-32">
+    <section className="bg-[#F5F1EA] py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         {/* Top grid: text left, image right */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">

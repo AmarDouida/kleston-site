@@ -76,7 +76,7 @@ export default async function AProposPage({
   ]
 
   return (
-    <main className="min-h-screen bg-[#FAFAF8]">
+    <main className="min-h-screen bg-[#F5F1EA]">
       <PageHero
         label={isFr ? 'À propos' : 'About'}
         title={isFr ? 'La conformité livrée et installée.' : 'Compliance delivered and installed.'}
@@ -102,7 +102,7 @@ export default async function AProposPage({
       </div>
 
       {/* Mission — image + text */}
-      <div className="bg-[#FAFAF8] py-24 md:py-32">
+      <div className="bg-[#F5F1EA] py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Text */}
           <div>
@@ -164,7 +164,7 @@ export default async function AProposPage({
       </div>
 
       {/* Certifications */}
-      <div className="bg-[#FAFAF8] py-20">
+      <div className="bg-[#F5F1EA] py-20">
         <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
           <div className="mb-10">
             <SectionLabel label={isFr ? 'Certifications' : 'Certifications'} />

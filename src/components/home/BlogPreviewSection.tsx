@@ -17,7 +17,7 @@ export async function BlogPreviewSection({ locale, posts }: BlogPreviewSectionPr
   if (posts.length === 0) return null
 
   return (
-    <section className="bg-[#FAFAF8] py-24 md:py-32">
+    <section className="bg-[#F5F1EA] py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-20">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
           <div>
@@ -66,7 +66,7 @@ export async function BlogPreviewSection({ locale, posts }: BlogPreviewSectionPr
                   </div>
 
                   <Link href={`/${locale}/blog/${post.slug}`}>
-                    <h3 className="font-condensed font-black text-[22px] uppercase tracking-tight text-[#1A1A1A] leading-tight mb-3 hover:text-[#FF5C00] transition-colors">
+                    <h3 className="font-condensed font-semibold text-[22px] uppercase tracking-tight text-[#1A1A1A] leading-tight mb-3 hover:text-[#FF5C00] transition-colors">
                       {post.title}
                     </h3>
                   </Link>

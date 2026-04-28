@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#FAFAF8]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#F5F1EA]">
       <div className="flex flex-col items-center gap-6">
         {/* KS logo mark */}
         <svg viewBox="0 0 992 896" className="h-12 w-auto animate-pulse" fill="#FF5C00">
